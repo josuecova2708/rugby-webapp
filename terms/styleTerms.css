@@ -1,0 +1,105 @@
+   /* Estilos específicos para términos y condiciones */
+        .terms-main {
+            min-height: calc(100vh - 200px);
+            padding: 20px;
+            background-color: var(--gray-color);
+        }
+
+        .terms-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .terms-header h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .terms-content {
+            color: var(--dark-color);
+        }
+
+        .terms-content h2 {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+        }
+
+        .terms-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .terms-content ul {
+            margin: 10px 0 15px 20px;
+            padding-left: 0;
+        }
+
+        .terms-content li {
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateX(-2px);
+        }
+
+        .last-updated {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-style: italic;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terms-main {
+                padding: 15px;
+            }
+
+            .terms-container {
+                padding: 20px;
+            }
+
+            .terms-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .terms-content h2 {
+                font-size: 1rem;
+            }
+
+            .terms-content {
+                font-size: 0.95rem;
+            }
+        }

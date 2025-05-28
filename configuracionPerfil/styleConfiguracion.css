@@ -1,0 +1,296 @@
+/* Estilos específicos para la página de configuración */
+
+/* Main content */
+.configuracion-main {
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+    background-color: var(--gray-color);
+}
+
+.configuracion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header con botón de volver */
+.configuracion-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--gray-color);
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.configuracion-header h1 {
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+/* Secciones de configuración */
+.config-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Opciones de configuración */
+.config-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.config-item:last-child {
+    border-bottom: none;
+}
+
+.config-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.config-label {
+    font-size: 1rem;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.config-description {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Toggle switches */
+.toggle-container {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: var(--primary-color);
+}
+
+.toggle-input:checked + .toggle-label::after {
+    transform: translateX(26px);
+}
+
+/* Items de acción (descargar y eliminar) */
+.config-action-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.config-action-item:hover {
+    background-color: #f8f8f8;
+}
+
+.action-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.download-item .action-icon {
+    background-color: #e8f5e8;
+    color: var(--primary-color);
+}
+
+.delete-item .action-icon {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.action-label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.download-item .action-label {
+    color: var(--primary-color);
+}
+
+.delete-item .action-label {
+    color: #d32f2f;
+}
+
+/* Estados de hover para items de acción */
+.download-item:hover {
+    background-color: #f0f8f0;
+}
+
+.delete-item:hover {
+    background-color: #fef5f5;
+}
+
+/* Media queries para desktop */
+@media (min-width: 768px) {
+    .configuracion-main {
+        padding: 40px;
+    }
+
+    .configuracion-container {
+        padding: 40px;
+    }
+
+    .configuracion-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .config-item {
+        padding: 20px 0;
+    }
+
+    .config-label {
+        font-size: 1.1rem;
+    }
+
+    .config-description {
+        font-size: 1rem;
+    }
+
+    /* Toggle más grande en desktop */
+    .toggle-label {
+        width: 60px;
+        height: 30px;
+    }
+
+    .toggle-label::after {
+        width: 26px;
+        height: 26px;
+        top: 2px;
+        left: 2px;
+    }
+
+    .toggle-input:checked + .toggle-label::after {
+        transform: translateX(30px);
+    }
+
+    /* Items de acción más grandes en desktop */
+    .config-action-item {
+        padding: 20px;
+    }
+
+    .action-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+
+    .action-label {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive para móviles pequeños */
+@media (max-width: 480px) {
+    .configuracion-main {
+        padding: 15px;
+    }
+
+    .configuracion-container {
+        padding: 15px;
+    }
+
+    .configuracion-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .config-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .toggle-container {
+        align-self: flex-end;
+    }
+
+    .config-action-item {
+        padding: 12px;
+    }
+
+    .action-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}

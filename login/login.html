@@ -1,0 +1,114 @@
+
+</html><!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicia Sesión - Rugby 360</title>
+    <link rel="stylesheet" href="./styleLogin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="login-header">
+        <nav class="loging-nav">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="logo">RUGBY <span>360</span></div>
+            <h1 class="page-title">Inicia Sesión</h1>
+        </nav>
+    </header>
+    
+    <main class="login-main">
+        <div class="login-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="../recursos/balon-logo.svg" alt="Rugby 360 Logo">
+                </div>
+                <h1>RUGBY <span>360</span></h1>
+            </div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-step" id="step-1">
+                    <div class="form-group">
+                        <label class="field-label">Email:</label>
+                        <input type="email" id="email" placeholder="" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="field-label">Contraseña:</label>
+                        <input type="password" id="password" placeholder="" required>
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="error-message" id="errorMessage" style="display: none;"></div>
+                
+                <button class="btn-submit" type="submit">Iniciar Sesión</button>
+            </form>
+
+            <!-- Información de usuario de prueba -->
+            <div class="demo-info">
+                <p><strong>Usuario de prueba:</strong></p>
+                <p>Email: jugador@rugby360.com</p>
+                <p>Contraseña: 123456</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Toggle para mostrar/ocultar contraseña
+        const togglePassword = document.querySelector('.toggle-password');
+        const passwordInput = document.getElementById('password');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            });
+        }
+
+        // Manejar envío del formulario de login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Intentar hacer login
+            const result = auth.login(email, password);
+            
+            if (result.success) {
+                // Login exitoso - redirigir al home
+                alert('¡Bienvenido ' + result.user.name + '!');
+                window.location.href = '../index.html';
+            } else {
+                // Mostrar error
+                errorMessage.textContent = result.message;
+                errorMessage.style.display = 'block';
+                
+                // Ocultar error después de 3 segundos
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Verificar si ya está logueado
+        if (auth.isLoggedIn()) {
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,647 @@
+/* Reset y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+a,
+a:visited,
+a:active,
+a:focus {
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+/* Variables de color */
+:root {
+    --primary-color: #58AF31;
+    --dark-color: #000000;
+    --light-color: #fff;
+    --gray-color: #f4f4f4;
+}
+
+/* Contenedores */
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Navegación */
+header {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--light-color);
+}
+
+.logo span {
+    color: var(--primary-color)
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-login {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.btn-register {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Estilos para usuario logueado */
+/* Estilos para usuario logueado */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-options {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-option {
+    background: none;
+    border: none;
+    color: var(--light-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-option:hover {
+    background-color: var(--primary-color);
+}
+
+/* Dropdown de usuario en desktop */
+.user-dropdown-container {
+    position: relative;
+}
+
+.user-profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    border: none;
+    background: none;
+}
+
+.user-profile-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar-small {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-color);
+    font-size: 1.5rem;
+}
+
+.user-greeting {
+    color: var(--light-color);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.dropdown-arrow {
+    color: var(--light-color);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--dark-color);
+    border: 1px solid #333;
+    border-radius: 8px;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.user-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: var(--light-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-bottom: 1px solid #333;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #333;
+}
+
+.dropdown-item i {
+    width: 16px;
+    text-align: center;
+}
+
+.logout-dropdown {
+    color: #ff6b6b;
+}
+
+.logout-dropdown:hover {
+    background-color: #2a0000;
+}
+
+/* Menú móvil para usuario logueado */
+.mobile-menu-container {
+    position: relative;
+}
+
+.hamburger-btn {
+    background: none;
+    border: none;
+    color: var(--light-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    transform: scale(1.1);
+}
+
+.hamburger-btn.active {
+    transform: rotate(90deg);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: var(--dark-color);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-section {
+    padding: 20px;
+}
+
+.menu-options {
+    flex: 1;
+    border-bottom: 1px solid #333;
+}
+
+.menu-item {
+    padding: 15px 0;
+    color: var(--light-color);
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.menu-item:hover {
+    background-color: #333;
+    padding-left: 10px;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.user-section {
+    background-color: #111;
+    margin-top: auto;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+.user-actions {
+    width: 100%;
+}
+
+.logout-item {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.logout-item:hover {
+    background-color: #2a0000;
+}
+
+/* Visibilidad responsive */
+.mobile-only {
+    display: block;
+}
+
+.desktop-only {
+    display: none;
+}
+
+/* Sección de imagen principal */
+.hero-image {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    width: 100%;
+    height: 400px !important;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+}
+
+.placeholder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Secciones comunes */
+section {
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.section-header {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.section-header h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+/* Sección de entrenamiento */
+.training-details {
+    padding: 15px;
+    background-color: var(--light-color);
+    text-align: center;
+}
+
+.training-time {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Sección de ubicación */
+.location-details {
+    padding: 15px;
+    background-color: var(--light-color);
+    min-height: 50px;
+}
+
+.location h2 {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Sección de noticias */
+.news-container {
+    background-color: var(--light-color);
+    padding: 15px;
+}
+
+.news-text {
+    margin-bottom: 15px;
+}
+
+.news-image {
+    width: 100%;
+    height: 150px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 20px 15px;
+    font-size: 12px;
+}
+
+.footer-content {
+    display: flex;
+    gap: 5px;
+    justify-content: space-evenly;
+}
+
+.contact-info,
+.nosotros,
+.terms {
+    margin-bottom: 15px;
+
+}
+
+.terms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icon {
+    color: var(--light-color);
+    height: 30px;
+    width: 30px;
+}
+
+.social-icon img {
+    height: 100%;
+    width: 100%;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rugby-ball-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.rugby-ball-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Dropdown de Comunidad en desktop */
+.nav-dropdown-container {
+    position: relative;
+}
+
+.dropdown-trigger {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-arrow-small {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow-small.rotated {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--dark-color);
+    border: 1px solid #333;
+    border-radius: 8px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: var(--light-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-bottom: 1px solid #333;
+}
+
+.nav-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.nav-dropdown-item:hover {
+    background-color: #333;
+}
+
+.nav-dropdown-item i {
+    width: 16px;
+    text-align: center;
+}
+
+/* Dropdown de usuario en desktop */
+.user-dropdown-container {
+    position: relative;
+}
+/* Media Queries para desktop */
+@media (min-width: 768px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    nav {
+        padding: 10px 30px;
+    }
+
+    .image-container {
+        height: 300px;
+    }
+
+    main {
+        padding: 0 30px;
+    }
+
+    /* Para la sección de noticias en desktop, texto e imagen en la misma fila */
+    .news-container {
+        display: flex;
+        gap: 20px;
+    }
+
+    .news-text {
+        flex: 2;
+        margin-bottom: 0;
+    }
+
+    .news-image {
+        flex: 1;
+        height: auto;
+    }
+
+    /* Footer en desktop */
+    .footer-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        font-size: 16px;
+    }
+
+    .terms {
+
+        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .social-media {
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 0;
+    }
+
+
+    .social-icon {
+        height: 50px;
+        width: 50px;
+    }
+
+    .rugby-ball-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .footer-logo {
+        margin-top: 30px;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+
+    .desktop-only {
+        display: flex;
+    }
+}

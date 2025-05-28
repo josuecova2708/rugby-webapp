@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleHistorial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="historial-main">
+        <div class="historial-container">
+            
+            <!-- Sidebar con categorías -->
+            <div class="historial-sidebar">
+                <div class="sidebar-header">
+                    <h2>Historial</h2>
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                
+                <div class="historial-categories">
+                    <div class="historial-category active" data-category="asistencias">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Asistencias y entrenamientos</span>
+                    </div>
+                    
+                    <div class="historial-category" data-category="faltas">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Faltas y sanciones</span>
+                    </div>
+                    
+                    <div class="historial-category" data-category="cambios">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Cambios en el perfil</span>
+                    </div>
+                    
+                    <div class="historial-category" data-category="pendientes">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Pendientes y avisos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área principal de historial -->
+            <div class="historial-area">
+                <!-- Header del historial -->
+                <div class="historial-header">
+                    <button class="back-home-btn" onclick="window.location.href='../index.html'">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="historial-info">
+                        <h3 id="historialTitle">Asistencias y entrenamientos</h3>
+                    </div>
+                    <div class="historial-actions">
+                        <button class="historial-action-btn mobile-only" onclick="toggleSidebar()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    
+                    </div>
+                </div>
+
+                <!-- Lista de registros históricos -->
+                <div class="historial-content" id="historialContent">
+                    
+                    <!-- Registros de Asistencias y entrenamientos -->
+                    <div class="historial-section" data-category="asistencias">
+                        <div class="historial-item presente">
+                            <div class="historial-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">10/01/2025 - 18:30 hs</div>
+                                <div class="historial-description">Presente en el entrenamiento Fuerza y Resistencia.</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item presente">
+                            <div class="historial-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">05/01/2025 - 16:00 hs</div>
+                                <div class="historial-description">Participaste en el partido vs. Jaguares.</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item ausente">
+                            <div class="historial-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">08/02/2025 - 16:30 hs</div>
+                                <div class="historial-description">Ausente en el entrenamiento del jueves 2 de febrero</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item presente">
+                            <div class="historial-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">25/02/2025 - 18:30 hs</div>
+                                <div class="historial-description">Presente en el entrenamiento</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item ausente">
+                            <div class="historial-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">29/02/2025 - 18:30 hs</div>
+                                <div class="historial-description">Ausente en el partido n°5</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registros de Faltas y sanciones -->
+                    <div class="historial-section" data-category="faltas" style="display: none;">
+                        <div class="historial-item falta">
+                            <div class="historial-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">15/02/2025 - 20:15 hs</div>
+                                <div class="historial-description">Tarjeta amarilla por juego peligroso en el partido vs. Los Pumas</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item sancion">
+                            <div class="historial-icon">
+                                <i class="fas fa-ban"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">22/01/2025 - 19:00 hs</div>
+                                <div class="historial-description">Suspensión de 1 partido por acumulación de tarjetas</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item falta">
+                            <div class="historial-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">10/01/2025 - 16:45 hs</div>
+                                <div class="historial-description">Amonestación verbal por llegada tarde al entrenamiento</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registros de Cambios en el perfil -->
+                    <div class="historial-section" data-category="cambios" style="display: none;">
+                        <div class="historial-item cambio">
+                            <div class="historial-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">28/02/2025 - 14:20 hs</div>
+                                <div class="historial-description">Actualización de peso: 82kg → 84kg</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item cambio">
+                            <div class="historial-icon">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">15/02/2025 - 10:30 hs</div>
+                                <div class="historial-description">Cambio de posición: Ala → Centro</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item cambio">
+                            <div class="historial-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">05/02/2025 - 16:15 hs</div>
+                                <div class="historial-description">Actualización de número de teléfono</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item cambio">
+                            <div class="historial-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">20/01/2025 - 11:45 hs</div>
+                                <div class="historial-description">Actualización de historial médico - Certificado apto físico</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registros de Pendientes y avisos -->
+                    <div class="historial-section" data-category="pendientes" style="display: none;">
+                        <div class="historial-item pendiente">
+                            <div class="historial-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">01/03/2025 - Vencimiento</div>
+                                <div class="historial-description">Renovación de certificado médico - Vence el 15 de marzo</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item aviso">
+                            <div class="historial-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">25/02/2025 - 09:00 hs</div>
+                                <div class="historial-description">Recordatorio: Pago de cuota mensual pendiente</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item pendiente">
+                            <div class="historial-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">20/02/2025 - Solicitado</div>
+                                <div class="historial-description">Entrega de documentación para registro federativo</div>
+                            </div>
+                        </div>
+
+                        <div class="historial-item aviso">
+                            <div class="historial-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="historial-details">
+                                <div class="historial-date">18/02/2025 - 15:30 hs</div>
+                                <div class="historial-description">Recordatorio: Cita médica programada para el 25/02</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensaje cuando no hay registros -->
+                <div class="no-records" id="noRecords" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <p>No hay registros en esta categoría</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado, redirigir al home
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder al historial');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado, actualizar la navegación
+            auth.updateNavigation();
+            initializeHistorialSystem();
+        });
+
+        // Inicializar sistema de historial
+        function initializeHistorialSystem() {
+            const categories = document.querySelectorAll('.historial-category');
+            const sections = document.querySelectorAll('.historial-section');
+            const historialTitle = document.getElementById('historialTitle');
+            const noRecords = document.getElementById('noRecords');
+
+            categories.forEach(category => {
+                category.addEventListener('click', function() {
+                    // Remover clase active de todas las categorías
+                    categories.forEach(cat => cat.classList.remove('active'));
+                    // Agregar clase active a la categoría clickeada
+                    this.classList.add('active');
+
+                    const selectedCategory = this.getAttribute('data-category');
+                    const categoryText = this.querySelector('span').textContent;
+                    
+                    // Actualizar título del historial
+                    historialTitle.textContent = categoryText;
+
+                    // Mostrar/ocultar secciones según categoría
+                    let hasRecords = false;
+                    sections.forEach(section => {
+                        if (section.getAttribute('data-category') === selectedCategory) {
+                            section.style.display = 'block';
+                            if (section.children.length > 0) {
+                                hasRecords = true;
+                            }
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+
+                    // Mostrar mensaje si no hay registros
+                    if (hasRecords) {
+                        noRecords.style.display = 'none';
+                    } else {
+                        noRecords.style.display = 'flex';
+                    }
+
+                    // Cerrar sidebar en móvil después de seleccionar
+                    if (window.innerWidth <= 768) {
+                        toggleSidebar();
+                    }
+                });
+            });
+        }
+
+        // Toggle sidebar en móvil
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.historial-sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Funciones de historial (simuladas)
+        function exportHistorial() {
+            const currentCategory = document.querySelector('.historial-category.active span').textContent;
+            alert(`Exportando historial de: ${currentCategory}`);
+            // Aquí iría la lógica para exportar el historial
+        }
+
+       
+
+        // Responsive: cerrar sidebar al hacer clic fuera en móvil
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('.historial-sidebar');
+            const historialActionBtn = document.querySelector('.historial-actions .mobile-only');
+            
+            if (window.innerWidth <= 768 && 
+                sidebar.classList.contains('active') && 
+                !sidebar.contains(event.target) && 
+                !historialActionBtn.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

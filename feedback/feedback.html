@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleFeedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="feedback-main">
+        <div class="feedback-container">
+
+            <!-- Sidebar con chats -->
+            <div class="feedback-sidebar">
+                <div class="sidebar-header">
+                    <h2>Chats</h2>
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                </div>
+
+                <div class="chat-categories">
+                    <div class="chat-category active" data-category="tecnica-general">
+                        <i class="fas fa-tactics"></i>
+                        <span>Técnica general</span>
+                    </div>
+
+                    <div class="chat-category" data-category="tecnica-defensiva">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Técnica defensiva</span>
+                    </div>
+
+                    <div class="chat-category" data-category="tecnica-ataque">
+                        <i class="fas fa-running"></i>
+                        <span>Técnica ataque</span>
+                    </div>
+
+                    <div class="chat-category" data-category="tecnica-destrezas">
+                        <i class="fas fa-star"></i>
+                        <span>Técnica destrezas individuales</span>
+                    </div>
+
+                    <div class="chat-category" data-category="tecnica-fisica">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Técnica física</span>
+                    </div>
+
+                    <div class="chat-category" data-category="gimnasio">
+                        <i class="fas fa-weight-hanging"></i>
+                        <span>Gimnasio</span>
+                    </div>
+
+                    <div class="chat-category" data-category="coach">
+                        <i class="fas fa-whistle"></i>
+                        <span>Coach</span>
+                    </div>
+
+                    <div class="chat-category" data-category="kinesiologia">
+                        <i class="fas fa-user-md"></i>
+                        <span>Kinesiología</span>
+                    </div>
+
+                    <div class="chat-category" data-category="otros">
+                        <i class="fas fa-comments"></i>
+                        <span>Otros</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área principal de chat -->
+            <div class="chat-area">
+                <!-- Header del chat -->
+                <div class="chat-header">
+                    <button class="back-home-btn" onclick="window.location.href='../index.html'">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="chat-info">
+                        <h3 id="chatTitle">#técnica general</h3>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn mobile-only" onclick="toggleSidebar()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <button class="chat-action-btn desktop-only" onclick="refreshChat()">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button class="chat-action-btn desktop-only" onclick="pinChat()">
+                            <i class="fas fa-thumbtack"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Separador de fecha -->
+                <div class="date-separator">
+                    <span>Lunes, 24 de enero de 2025</span>
+                </div>
+
+                <!-- Mensajes del chat -->
+                <div class="messages-container" id="messagesContainer">
+
+                    <!-- Mensaje del entrenador -->
+                    <div class="message coach-message">
+                        <div class="message-avatar">
+                            <img src="../recursos/coach-avatar-1.png" alt="Entrenador"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Nombre usuario 1 entrenador</span>
+                                <span class="message-time">12:10</span>
+                            </div>
+                            <div class="message-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensaje del jugador con respuestas -->
+                    <div class="message player-message">
+                        <div class="message-avatar">
+                            <img src="../recursos/player-avatar-1.png" alt="Jugador"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Nombre usuario 1 jugador</span>
+                                <span class="message-time">12:15</span>
+                            </div>
+                            <div class="message-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec Praesent libero.
+                                Sed cursus ante dapibus diam. Nunc feugiat mi a tellus consequat imperdiet
+                            </div>
+                            <div class="message-replies">
+                                <i class="fas fa-reply"></i>
+                                <span>2 respuestas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Más mensajes de ejemplo para diferentes categorías -->
+                    <div class="message coach-message" data-category="tecnica-defensiva" style="display: none;">
+                        <div class="message-avatar">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Entrenador Defensivo</span>
+                                <span class="message-time">14:30</span>
+                            </div>
+                            <div class="message-text">
+                                Recuerden mantener la línea defensiva compacta. La clave está en la comunicación
+                                constante entre compañeros.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message coach-message" data-category="tecnica-ataque" style="display: none;">
+                        <div class="message-avatar">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Entrenador de Ataque</span>
+                                <span class="message-time">16:45</span>
+                            </div>
+                            <div class="message-text">
+                                Trabajaremos en los pases largos esta semana. Es fundamental mejorar la precisión en
+                                jugadas de ataque rápido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message coach-message" data-category="tecnica-fisica" style="display: none;">
+                        <div class="message-avatar">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Preparador Físico</span>
+                                <span class="message-time">18:20</span>
+                            </div>
+                            <div class="message-text">
+                                Excelente progreso en los entrenamientos de resistencia. Continuemos con esta
+                                intensidad.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message coach-message" data-category="gimnasio" style="display: none;">
+                        <div class="message-avatar">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Instructor de Gimnasio</span>
+                                <span class="message-time">19:00</span>
+                            </div>
+                            <div class="message-text">
+                                Mañana trabajaremos rutina de fuerza. No olviden traer sus guantes y toalla.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message coach-message" data-category="coach" style="display: none;">
+                        <div class="message-avatar">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Coach Principal</span>
+                                <span class="message-time">20:15</span>
+                            </div>
+                            <div class="message-text">
+                                Equipo, estoy muy orgulloso del esfuerzo mostrado esta semana. Sigamos trabajando unidos
+                                hacia nuestros objetivos.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message coach-message" data-category="kinesiologia" style="display: none;">
+                        <div class="message-avatar">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Kinesiólogo</span>
+                                <span class="message-time">11:30</span>
+                            </div>
+                            <div class="message-text">
+                                Recordatorio: estiramientos post-entrenamiento son fundamentales para prevenir lesiones.
+                                No los salteen.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Área de escritura de mensaje (solo visual, sin funcionalidad) -->
+                <div class="message-input-area">
+                    <div class="input-container">
+                        <button class="attach-btn">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <input type="text" placeholder="Escribe tu mensaje..." class="message-input" disabled>
+                        <button class="send-btn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado, redirigir al home
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder al feedback');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado, actualizar la navegación
+            auth.updateNavigation();
+            initializeChatSystem();
+        });
+
+        // Inicializar sistema de chat
+        function initializeChatSystem() {
+            const categories = document.querySelectorAll('.chat-category');
+            const messages = document.querySelectorAll('.message');
+            const chatTitle = document.getElementById('chatTitle');
+
+            categories.forEach(category => {
+                category.addEventListener('click', function () {
+                    // Remover clase active de todas las categorías
+                    categories.forEach(cat => cat.classList.remove('active'));
+                    // Agregar clase active a la categoría clickeada
+                    this.classList.add('active');
+
+                    const selectedCategory = this.getAttribute('data-category');
+                    const categoryText = this.querySelector('span').textContent;
+
+                    // Actualizar título del chat
+                    chatTitle.textContent = `#${categoryText.toLowerCase()}`;
+
+                    // Mostrar/ocultar mensajes según categoría
+                    if (selectedCategory === 'tecnica-general') {
+                        // Mostrar mensajes por defecto
+                        messages.forEach(message => {
+                            if (!message.hasAttribute('data-category')) {
+                                message.style.display = 'flex';
+                            } else {
+                                message.style.display = 'none';
+                            }
+                        });
+                    } else {
+                        // Mostrar mensajes de la categoría específica
+                        messages.forEach(message => {
+                            if (message.getAttribute('data-category') === selectedCategory) {
+                                message.style.display = 'flex';
+                            } else {
+                                message.style.display = 'none';
+                            }
+                        });
+                    }
+
+                    // Cerrar sidebar en móvil después de seleccionar
+                    if (window.innerWidth <= 768) {
+                        toggleSidebar();
+                    }
+                });
+            });
+        }
+
+        // Toggle sidebar en móvil
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.feedback-sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Funciones de chat (simuladas)
+        function refreshChat() {
+            console.log('Actualizando chat...');
+            // Aquí iría la lógica para actualizar mensajes
+        }
+
+        function pinChat() {
+            console.log('Fijando chat...');
+            // Aquí iría la lógica para fijar el chat
+        }
+
+        // Responsive: cerrar sidebar al hacer clic fuera en móvil
+        document.addEventListener('click', function (event) {
+            const sidebar = document.querySelector('.feedback-sidebar');
+            const chatActionBtn = document.querySelector('.chat-actions .mobile-only');
+
+            if (window.innerWidth <= 768 &&
+                sidebar.classList.contains('active') &&
+                !sidebar.contains(event.target) &&
+                !chatActionBtn.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

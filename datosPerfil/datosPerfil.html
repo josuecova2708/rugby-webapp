@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Datos - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleDatosPerfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="datos-main">
+        <div class="datos-container">
+            <!-- Header con botón de volver -->
+            <div class="datos-header">
+                <button class="back-btn" onclick="window.location.href='../perfil/perfil.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Mis Datos</h1>
+            </div>
+
+            <!-- Formulario de datos -->
+            <form class="datos-form" id="datosForm">
+
+                <!-- Sección de Información Personal -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-user"></i> Información Personal</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Nombre completo:</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Fecha de nacimiento:</label>
+                        <input type="date" id="birthDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Email:</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Contraseña:</label>
+                        <input type="password" id="password" required>
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sección de Información Deportiva -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-football-ball"></i> Información Deportiva</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Apodo:</label>
+                        <input type="text" id="nickname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Posición:</label>
+                        <select class="form-select" id="position" required>
+                            <option value="">Seleccionar posición</option>
+                            <option value="pilar">Pilar</option>
+                            <option value="hooker">Hooker</option>
+                            <option value="segunda-linea">Segunda línea</option>
+                            <option value="tercera-linea">Tercera línea</option>
+                            <option value="medio-scrum">Medio scrum</option>
+                            <option value="apertura">Apertura</option>
+                            <option value="centro">Centro</option>
+                            <option value="wing">Wing</option>
+                            <option value="fullback">Fullback</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Categoría:</label>
+                        <select class="form-select" id="category" required>
+                            <option value="">Seleccionar categoría</option>
+                            <option value="m19">M19</option>
+                            <option value="m21">M21</option>
+                            <option value="primera">Primera</option>
+                            <option value="veteranos">Veteranos</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- Sección de Información Médica -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-heartbeat"></i> Información Médica</h2>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="field-label">Estatura (m):</label>
+                            <input type="number" id="height" step="0.01" min="1.0" max="2.5" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="field-label">Peso (kg):</label>
+                            <input type="number" id="weight" step="0.1" min="30" max="200" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Obra social:</label>
+                        <input type="text" id="healthInsurance" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Número de credencial:</label>
+                        <input type="text" id="credentialNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Historial médico:</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="medicalHistory" accept=".pdf,.jpg,.jpeg,.png" class="file-input">
+                            <label for="medicalHistory" class="file-label">
+                                <i class="fas fa-upload"></i>
+                                <span>Subir archivo</span>
+                            </label>
+                            <span class="file-name" id="fileName">Ningún archivo seleccionado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="window.location.href='./perfil.html'">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-save"></i>
+                        Guardar cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado, redirigir al home
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado, actualizar la navegación y cargar datos
+            auth.updateNavigation();
+            loadUserData();
+        });
+
+        // Cargar datos del usuario en el formulario
+        function loadUserData() {
+            const user = auth.getCurrentUser();
+            if (user) {
+                document.getElementById('fullName').value = user.name || '';
+                document.getElementById('birthDate').value = user.birthDate || '';
+                document.getElementById('email').value = user.email || '';
+                document.getElementById('password').value = user.password || '';
+                document.getElementById('nickname').value = user.nickname || '';
+                document.getElementById('position').value = user.position || '';
+                document.getElementById('category').value = user.category || '';
+                document.getElementById('height').value = user.height || '';
+                document.getElementById('weight').value = user.weight || '';
+                document.getElementById('healthInsurance').value = user.healthInsurance || '';
+                document.getElementById('credentialNumber').value = user.credentialNumber || '';
+            }
+        }
+
+        // Toggle para mostrar/ocultar contraseña
+        const togglePassword = document.querySelector('.toggle-password');
+        const passwordInput = document.getElementById('password');
+
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            });
+        }
+
+        // Manejar selección de archivo
+        const fileInput = document.getElementById('medicalHistory');
+        const fileName = document.getElementById('fileName');
+
+        fileInput.addEventListener('change', function (e) {
+            if (e.target.files.length > 0) {
+                fileName.textContent = e.target.files[0].name;
+            } else {
+                fileName.textContent = 'Ningún archivo seleccionado';
+            }
+        });
+
+        // Manejar envío del formulario
+        document.getElementById('datosForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Aquí iría la lógica para guardar los datos
+            // Por ahora solo mostramos un mensaje
+            alert('Datos guardados correctamente (demo)');
+        });
+    </script>
+</body>
+
+</html>

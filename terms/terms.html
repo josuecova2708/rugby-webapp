@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./styleTerms.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="terms-main">
+        <div class="terms-container">
+            <button class="back-btn" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+
+            <div class="terms-header">
+                <h1>TÉRMINOS Y CONDICIONES</h1>
+            </div>
+
+            <div class="terms-content">
+                <h2>1. Introducción</h2>
+                <p>Bienvenido/a a Rugby 360 (en adelante, "la Plataforma"). Al acceder y utilizar nuestros servicios, aceptas cumplir con los siguientes Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, te recomendamos no utilizar la Plataforma.</p>
+
+                <h2>2. Uso de la Plataforma</h2>
+                <ul>
+                    <li>La Plataforma está diseñada para la gestión y seguimiento de actividades deportivas del club de rugby.</li>
+                    <li>Debes proporcionar información precisa y actualizada al registrarte.</li>
+                    <li>No está permitido el uso de la Plataforma para actividades ilegales o no autorizadas.</li>
+                    <li>Nos reservamos el derecho de suspender o cancelar cuentas que infrinjan estos términos.</li>
+                </ul>
+
+                <h2>3. Registro y Seguridad de la Cuenta</h2>
+                <ul>
+                    <li>Para acceder a ciertas funcionalidades, es posible que debas registrarte proporcionando datos personales.</li>
+                    <li>Es tu responsabilidad mantener la confidencialidad de tu cuenta y contraseña.</li>
+                    <li>Notifícanos de inmediato si detectas un uso no autorizado de tu cuenta.</li>
+                </ul>
+
+                <h2>4. Contenido y Propiedad Intelectual</h2>
+                <ul>
+                    <li>Todo el contenido de la Plataforma, incluyendo textos, imágenes, logos y diseños, está protegido por derechos de autor.</li>
+                    <li>No puedes copiar, distribuir, modificar o crear ningún contenido sin autorización expresa.</li>
+                </ul>
+
+                <h2>5. Privacidad y Protección de Datos</h2>
+                <ul>
+                    <li>Respetamos tu privacidad y protegemos tus datos personales según nuestra Política de Privacidad.</li>
+                    <li>Tus datos solo se utilizarán para mejorar la experiencia en la Plataforma y cumplir con nuestras obligaciones legales.</li>
+                </ul>
+
+                <h2>6. Responsabilidades y Limitaciones</h2>
+                <ul>
+                    <li>No garantizamos que la Plataforma esté libre de errores o interrupciones.</li>
+                    <li>No nos hacemos responsables por daños directos o indirectos derivados del uso de la Plataforma.</li>
+                </ul>
+
+                <h2>7. Modificaciones en los Términos</h2>
+                <ul>
+                    <li>Nos reservamos el derecho de modificar estos Términos en cualquier momento.</li>
+                    <li>Se notificará a los usuarios sobre cambios relevantes a través de la Plataforma.</li>
+                </ul>
+
+                <h2>8. Legislación Aplicable</h2>
+                <ul>
+                    <li>Estos Términos se rigen por las leyes de Argentina.</li>
+                    <li>Cualquier disputa se resolverá en los tribunales de provincia de Buenos Aires, Argentina.</li>
+                </ul>
+
+                <h2>9. Contacto</h2>
+                <p>Si tienes preguntas sobre estos Términos, puedes contactarnos en loscardosclub@gmail.com.</p>
+
+                <div class="last-updated">
+                    <p>Fecha de última actualización: Mayo 2025.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <p>Términos y condiciones</p>
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación y actualizar navegación
+        document.addEventListener('DOMContentLoaded', function () {
+            updateNavigation();
+        });
+
+        function updateNavigation() {
+            const navButtons = document.querySelector('.nav-buttons');
+            
+            // Verificar si el sistema de autenticación está disponible
+            if (typeof auth !== 'undefined' && auth.isLoggedIn()) {
+                // Usuario logueado - usar navegación completa
+                auth.updateNavigation();
+            } else {
+                // Usuario no logueado - mostrar botones de login/registro
+                navButtons.innerHTML = `
+                    <button class="btn-login" onclick="window.location.href = '../login/login.html'">Iniciar sesión</button>
+                    <button class="btn-register" onclick="window.location.href='../registro/registro.html'">Registrarse</button>
+                `;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleNotificaciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="notificacion-main">
+        <div class="notificacion-container">
+            <!-- Header con botón de volver -->
+            <div class="notificacion-header">
+                <button class="back-btn" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Notificaciones</h1>
+                <button class="filter-btn" onclick="toggleFilterMenu()">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+            </div>
+
+            <!-- Filtros (inicialmente oculto) -->
+            <div class="filter-menu" id="filterMenu">
+                <div class="filter-options">
+                    <button class="filter-option active" data-filter="all">Todas</button>
+                    <button class="filter-option" data-filter="training">Entrenamientos</button>
+                    <button class="filter-option" data-filter="matches">Partidos</button>
+                    <button class="filter-option" data-filter="feedback">Feedback</button>
+                </div>
+            </div>
+
+            <!-- Lista de notificaciones -->
+            <div class="notifications-list">
+                
+                <!-- Notificación de Entrenamiento Completado -->
+                <div class="notification-item training" data-category="training">
+                    <div class="notification-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Entrenamiento completado</div>
+                        <div class="notification-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>20 de marzo, 18:45</span>
+                        </div>
+                        <div class="notification-message">
+                            Tu desempeño en el entrenamiento fue excelente. ¡Sigue así!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notificación de Tackles -->
+                <div class="notification-item training" data-category="training">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>19 de marzo, 12:30</span>
+                        </div>
+                        <div class="notification-message">
+                            ¡Completa 10 tackles efectivos esta semana y gana puntos extra!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notificación de Próximo Partido -->
+                <div class="notification-item match" data-category="matches">
+                    <div class="notification-icon">
+                        <i class="fas fa-football-ball"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Próximo partido programado</div>
+                        <div class="notification-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>18 de marzo, 15:10</span>
+                        </div>
+                        <div class="notification-message">
+                            Este sábado a las 16:00 jugamos contra Los Jaguares. ¡Prepárate!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notificación de Feedback del Coach -->
+                <div class="notification-item feedback" data-category="feedback">
+                    <div class="notification-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Feedback del coach</div>
+                        <div class="notification-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>17 de marzo, 10:00</span>
+                        </div>
+                        <div class="notification-message">
+                            Trabaja en mejorar tu velocidad de reacción en el scrum.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Más notificaciones de ejemplo -->
+                <div class="notification-item training" data-category="training">
+                    <div class="notification-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Entrenamiento físico</div>
+                        <div class="notification-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>16 de marzo, 19:30</span>
+                        </div>
+                        <div class="notification-message">
+                            Recuerda asistir al entrenamiento de fuerza mañana a las 18:00.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notification-item match" data-category="matches">
+                    <div class="notification-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Resultado del partido</div>
+                        <div class="notification-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>15 de marzo, 20:15</span>
+                        </div>
+                        <div class="notification-message">
+                            ¡Victoria 24-18 contra Los Pumas! Excelente trabajo del equipo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notification-item feedback" data-category="feedback">
+                    <div class="notification-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">Reconocimiento</div>
+                        <div class="notification-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>14 de marzo, 14:20</span>
+                        </div>
+                        <div class="notification-message">
+                            Fuiste elegido jugador destacado de la semana. ¡Felicitaciones!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mensaje cuando no hay notificaciones filtradas -->
+            <div class="no-notifications" id="noNotifications" style="display: none;">
+                <i class="fas fa-bell-slash"></i>
+                <p>No hay notificaciones de este tipo</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado, redirigir al home
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder a las notificaciones');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado, actualizar la navegación
+            auth.updateNavigation();
+            initializeFilters();
+        });
+
+        // Toggle del menú de filtros
+        function toggleFilterMenu() {
+            const filterMenu = document.getElementById('filterMenu');
+            filterMenu.classList.toggle('active');
+        }
+
+        // Inicializar sistema de filtros
+        function initializeFilters() {
+            const filterButtons = document.querySelectorAll('.filter-option');
+            const notifications = document.querySelectorAll('.notification-item');
+            const noNotificationsMsg = document.getElementById('noNotifications');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    // Filtrar notificaciones
+                    notifications.forEach(notification => {
+                        if (filter === 'all' || notification.getAttribute('data-category') === filter) {
+                            notification.style.display = 'flex';
+                            visibleCount++;
+                        } else {
+                            notification.style.display = 'none';
+                        }
+                    });
+
+                    // Mostrar mensaje si no hay notificaciones
+                    if (visibleCount === 0) {
+                        noNotificationsMsg.style.display = 'flex';
+                    } else {
+                        noNotificationsMsg.style.display = 'none';
+                    }
+
+                    // Cerrar menú de filtros
+                    document.getElementById('filterMenu').classList.remove('active');
+                });
+            });
+        }
+
+        // Cerrar filtros al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const filterMenu = document.getElementById('filterMenu');
+            const filterBtn = document.querySelector('.filter-btn');
+            
+            if (!filterMenu.contains(event.target) && !filterBtn.contains(event.target)) {
+                filterMenu.classList.remove('active');
+            }
+        });
+
+        // Marcar notificación como leída al hacer clic
+        document.querySelectorAll('.notification-item').forEach(notification => {
+            notification.addEventListener('click', function() {
+                this.classList.add('read');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleConfiguracion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="configuracion-main">
+        <div class="configuracion-container">
+            <!-- Header con botón de volver -->
+            <div class="configuracion-header">
+                <button class="back-btn" onclick="window.location.href='../perfil/perfil.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Configuración</h1>
+            </div>
+
+            <!-- Sección de Notificaciones y permisos -->
+            <div class="config-section">
+                <h2 class="section-title">Notificaciones y permisos</h2>
+                
+                <div class="config-options">
+                    <!-- Permitir notificaciones en el móvil -->
+                    <div class="config-item">
+                        <div class="config-info">
+                            <span class="config-label">Permitir notificaciones en el móvil</span>
+                        </div>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="mobile-notifications" class="toggle-input">
+                            <label for="mobile-notifications" class="toggle-label"></label>
+                        </div>
+                    </div>
+
+                    <!-- Sonidos y vibración en notificaciones -->
+                    <div class="config-item">
+                        <div class="config-info">
+                            <span class="config-label">Sonidos y vibración en notificaciones</span>
+                        </div>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="sounds-vibration" class="toggle-input">
+                            <label for="sounds-vibration" class="toggle-label"></label>
+                        </div>
+                    </div>
+
+                    <!-- Permitir acceso a la cámara y galería -->
+                    <div class="config-item">
+                        <div class="config-info">
+                            <span class="config-label">Permitir acceso a la cámara y galería</span>
+                            <span class="config-description">(Para subir fotos de perfil o informes médicos)</span>
+                        </div>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="camera-gallery" class="toggle-input">
+                            <label for="camera-gallery" class="toggle-label"></label>
+                        </div>
+                    </div>
+
+                    <!-- Sincronizar con dispositivos de salud -->
+                    <div class="config-item">
+                        <div class="config-info">
+                            <span class="config-label">Sincronizar con dispositivos de salud</span>
+                            <span class="config-description">(Ej: smartwatch)</span>
+                        </div>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="health-devices" class="toggle-input">
+                            <label for="health-devices" class="toggle-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Priorizar notificaciones -->
+            <div class="config-section">
+                <h2 class="section-title">Priorizar notificaciones</h2>
+                
+                <div class="config-options">
+                    <!-- Entrenamientos -->
+                    <div class="config-item">
+                        <div class="config-info">
+                            <span class="config-label">Entrenamientos</span>
+                        </div>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="training-notifications" class="toggle-input">
+                            <label for="training-notifications" class="toggle-label"></label>
+                        </div>
+                    </div>
+
+                    <!-- Mensajes y alertas -->
+                    <div class="config-item">
+                        <div class="config-info">
+                            <span class="config-label">Mensajes y alertas</span>
+                        </div>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="messages-alerts" class="toggle-input">
+                            <label for="messages-alerts" class="toggle-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Descargar rendimiento -->
+            <div class="config-section">
+                <div class="config-action-item download-item">
+                    <div class="action-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <span class="action-label">Descargar rendimiento semanal/mensual</span>
+                </div>
+            </div>
+
+            <!-- Sección de Eliminar cuenta -->
+            <div class="config-section">
+                <div class="config-action-item delete-item">
+                    <div class="action-icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <span class="action-label">Eliminar cuenta</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado, redirigir al home
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado, actualizar la navegación
+            auth.updateNavigation();
+            loadUserSettings();
+        });
+
+        // Cargar configuraciones del usuario (simulado)
+        function loadUserSettings() {
+            // Aquí cargarías las configuraciones guardadas del usuario
+            // Por ahora dejamos algunos valores por defecto
+            document.getElementById('mobile-notifications').checked = true;
+            document.getElementById('training-notifications').checked = true;
+        }
+
+        // Manejar cambios en los toggles
+        document.querySelectorAll('.toggle-input').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                console.log(`${this.id} cambiado a: ${this.checked}`);
+                // Aquí enviarías los cambios al backend
+                saveUserSetting(this.id, this.checked);
+            });
+        });
+
+        // Función para guardar configuración (simulada)
+        function saveUserSetting(setting, value) {
+            // Aquí harías la llamada al backend para guardar la configuración
+            console.log(`Guardando configuración: ${setting} = ${value}`);
+        }
+
+        // Manejar descarga de rendimiento
+        document.querySelector('.download-item').addEventListener('click', function() {
+            alert('Funcionalidad de descarga de rendimiento - Próximamente');
+            // Aquí implementarías la descarga del reporte
+        });
+
+        // Manejar eliminación de cuenta
+        document.querySelector('.delete-item').addEventListener('click', function() {
+            if (confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.')) {
+                alert('Funcionalidad de eliminación de cuenta - Próximamente');
+                // Aquí implementarías la eliminación de cuenta
+            }
+        });
+    </script>
+</body>
+
+</html>

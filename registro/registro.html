@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Rugby 360</title>
+    <link rel="stylesheet" href="./styleRegistro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="./scriptRegistro.js"></script>
+</head>
+<body class="registro-body">
+    <header class="registro-header">
+        <nav class="registro-nav">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="logo">RUGBY <span>360</span></div>
+            <h1 class="page-title">Registro</h1>
+        </nav>
+    </header>
+
+    <main class="registro-main">
+        <div class="registro-container">
+            <form class="registro-form">
+                <!-- Paso 1: Datos personales -->
+                <div class="form-step" id="step-1">
+                    <div class="profile-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="camera-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Email:</label>
+                        <input type="email" placeholder="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Contraseña:</label>
+                        <input type="password" placeholder="" required>
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Número de móvil:</label>
+                        <input type="tel" placeholder="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Nombre y apellido:</label>
+                        <input type="text" placeholder="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Fecha de nacimiento:</label>
+                        <input type="date" placeholder="" required>
+                    </div>
+
+                    <button type="button" class="nextpage-btn" id="next-step">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Paso 2: Información del jugador -->
+                <div class="form-step hidden" id="step-2">
+                    <div class="profile-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="camera-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Posición:</label>
+                        <select class="form-select" required>
+                            <option value=""></option>
+                            <option value="pilar">Pilar</option>
+                            <option value="hooker">Hooker</option>
+                            <option value="segunda-linea">Segunda línea</option>
+                            <option value="tercera-linea">Tercera línea</option>
+                            <option value="medio-scrum">Medio scrum</option>
+                            <option value="apertura">Apertura</option>
+                            <option value="centro">Centro</option>
+                            <option value="wing">Wing</option>
+                            <option value="fullback">Fullback</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Categoría:</label>
+                        <select class="form-select" required>
+                            <option value=""></option>
+                            <option value="m19">M19</option>
+                            <option value="m21">M21</option>
+                            <option value="primera">Primera</option>
+                            <option value="veteranos">Veteranos</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Estatura y peso:</label>
+                        <input type="text" placeholder="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Obra social:</label>
+                        <input type="text" placeholder="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Número de credencial:</label>
+                        <input type="text" placeholder="" required>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="prev-btn" id="prev-step">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Registrarme</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+   
+</body>
+</html>

@@ -1,0 +1,352 @@
+/* Estilos específicos para la página de notificaciones */
+
+/* Main content */
+.notificacion-main {
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+    background-color: var(--gray-color);
+    
+}
+
+.notificacion-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header con botón de volver y filtros */
+.notificacion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--gray-color);
+}
+
+.notificacion-header > div {
+    display: flex;
+    align-items: center;
+}
+
+.back-btn, .filter-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover, .filter-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.back-btn {
+    margin-right: 15px;
+}
+
+.notificacion-header h1 {
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* Menú de filtros */
+.filter-menu {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.filter-menu.active {
+    max-height: 100px;
+    opacity: 1;
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-option {
+    background-color: #e9ecef;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    color: #6c757d;
+}
+
+.filter-option:hover {
+    background-color: #dee2e6;
+}
+
+.filter-option.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Lista de notificaciones */
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Item de notificación */
+.notification-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.notification-item:hover {
+    background-color: #f1f3f4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Tipos de notificaciones */
+.notification-item.training {
+    border-left-color: var(--primary-color);
+}
+
+.notification-item.match {
+    border-left-color: #007bff;
+}
+
+.notification-item.feedback {
+    border-left-color: #ffc107;
+}
+
+/* Notificación leída */
+.notification-item.read {
+    opacity: 0.7;
+    background-color: #ffffff;
+}
+
+.notification-item.read::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Icono de notificación */
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.training .notification-icon {
+    background-color: rgba(88, 175, 49, 0.1);
+    color: var(--primary-color);
+}
+
+.match .notification-icon {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+}
+
+.feedback .notification-icon {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+/* Contenido de notificación */
+.notification-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.notification-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+}
+
+.notification-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.notification-date i {
+    font-size: 0.8rem;
+}
+
+.notification-message {
+    color: #495057;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Mensaje cuando no hay notificaciones */
+.no-notifications {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #6c757d;
+    text-align: center;
+}
+
+.no-notifications i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.no-notifications p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Media queries para desktop */
+@media (min-width: 768px) {
+    .notificacion-main {
+        padding: 40px;
+    }
+
+    .notificacion-container {
+        padding: 40px;
+    }
+
+    .notificacion-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .notification-item {
+        padding: 25px;
+        gap: 20px;
+    }
+
+    .notification-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+
+    .notification-title {
+        font-size: 1.2rem;
+    }
+
+    .notification-date {
+        font-size: 1rem;
+    }
+
+    .notification-message {
+        font-size: 1.1rem;
+    }
+
+    .filter-options {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .filter-option {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Responsive para móviles pequeños */
+@media (max-width: 480px) {
+    .notificacion-main {
+        padding: 15px;
+    }
+
+    .notificacion-container {
+        padding: 15px;
+    }
+
+    .notificacion-header {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .notificacion-header h1 {
+        font-size: 1.5rem;
+        order: 2;
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+
+    .back-btn {
+        order: 1;
+        margin-right: 0;
+    }
+
+    .filter-btn {
+        order: 3;
+    }
+
+    .notification-item {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .notification-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .notification-title {
+        font-size: 1rem;
+    }
+
+    .notification-date {
+        font-size: 0.85rem;
+    }
+
+    .notification-message {
+        font-size: 0.95rem;
+    }
+
+    .filter-options {
+        gap: 8px;
+    }
+
+    .filter-option {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,858 @@
+/* Estilos específicos para la página de panel de rendimiento */
+
+/* Main content */
+.panel-main {
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+    background-color: var(--gray-color);
+}
+
+.panel-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header con botón de volver */
+.panel-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--gray-color);
+}
+
+.back-home-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateX(-2px);
+}
+
+.panel-header h1 {
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* Pestañas de navegación */
+.panel-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border: none;
+    border-right: 1px solid #e0e0e0;
+    color: #6c757d;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:last-child {
+    border-right: none;
+}
+
+.tab-btn:hover {
+    background-color: #e9ecef;
+    color: var(--dark-color);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-weight: 600;
+}
+
+/* Contenido de las pestañas */
+.panel-content {
+    min-height: 400px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sección de Gimnasio */
+.gimnasio-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Tabla de rendimiento */
+.performance-table-container {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.performance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.performance-table thead {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.performance-table th,
+.performance-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.performance-table th {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.performance-table tbody tr {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.performance-table tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.performance-table tbody tr:hover {
+    background-color: rgba(88, 175, 49, 0.1);
+}
+
+.performance-table td {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+/* Columnas específicas */
+.performance-table td:nth-child(2),
+.performance-table td:nth-child(3) {
+    text-align: center;
+    font-weight: 600;
+}
+
+.performance-table td:nth-child(3) {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* Estadísticas del gimnasio */
+.gym-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background-color: #f1f3f4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(88, 175, 49, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.stat-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.stat-info p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* Sección de Asistencias */
+.asistencias-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.asistencias-section h2 {
+    color: var(--dark-color);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.asistencias-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Calendario */
+.calendar-section {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #007bff;
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    color: var(--dark-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-nav-btn:hover {
+    background-color: #e9ecef;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    text-transform: capitalize;
+    font-weight: 600;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.calendar-grid {
+    width: 100%;
+}
+
+.calendar-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+.calendar-days-header span {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 8px 4px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 35px;
+}
+
+.calendar-day.current-month {
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+.calendar-day.prev-month,
+.calendar-day.next-month {
+    color: #adb5bd;
+    background-color: transparent;
+}
+
+.calendar-day:hover {
+    background-color: #e9ecef;
+    transform: scale(1.1);
+}
+
+.calendar-day.has-attendance:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+/* Sección del gráfico */
+.chart-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.chart-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.chart-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+/* Leyenda */
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--dark-color);
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Tabla de asistencias */
+.attendance-table-container {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.attendance-table thead {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.attendance-table th {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.attendance-table tbody tr {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.attendance-table tbody tr:hover {
+    background-color: rgba(88, 175, 49, 0.1);
+}
+
+.attendance-table td {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+/* Sección de Desempeño técnico */
+.desempeno-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.desempeno-top-section,
+.desempeno-bottom-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.desempeno-bottom-section {
+    grid-template-columns: 2fr 1fr;
+}
+
+.chart-container-tech {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container-tech h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chart-container-tech h3 i {
+    color: var(--primary-color);
+}
+
+/* Gráfico de línea (progreso físico) */
+.line-chart-container {
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+#progressChart {
+    width: 100%;
+    height: 100%;
+}
+
+/* Gráfico de composición corporal */
+.body-composition-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.composition-chart-container {
+    flex-shrink: 0;
+}
+
+.composition-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Gráfico de barras (rendimiento semanal) */
+.bar-chart-container {
+    width: 100%;
+    height: 250px;
+    position: relative;
+}
+
+#weeklyPerformanceChart {
+    width: 100%;
+    height: 100%;
+}
+
+/* Tarjeta del jugador */
+.player-card {
+    width: 200px;
+    height: 340px;
+    border-radius: 15px;
+    
+    color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+.player-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius:0px;
+}
+
+.player-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+    border-radius: 50%;
+}
+
+
+
+
+/* Secciones de próximamente */
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: #6c757d;
+}
+
+.coming-soon i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+    color: var(--primary-color);
+}
+
+.coming-soon h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.coming-soon p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Media queries para desktop */
+@media (min-width: 768px) {
+    .panel-main {
+        padding: 40px;
+    }
+
+    .panel-container {
+        padding: 40px;
+    }
+
+    .panel-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .tab-btn {
+        padding: 18px 25px;
+        font-size: 1.1rem;
+    }
+
+    .performance-table th,
+    .performance-table td {
+        padding: 18px 25px;
+    }
+
+    .performance-table th {
+        font-size: 1.1rem;
+    }
+
+    .stat-card {
+        padding: 25px;
+        gap: 20px;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+
+    .stat-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .stat-info p {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 767px) {
+    .panel-main {
+        padding: 15px;
+    }
+
+    .panel-container {
+        padding: 15px;
+    }
+
+    .panel-header {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .panel-header h1 {
+        font-size: 1.5rem;
+        order: 2;
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+
+    .back-home-btn {
+        order: 1;
+        margin-right: 0;
+    }
+
+    .panel-tabs {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .tab-btn {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .tab-btn:last-child {
+        border-bottom: none;
+    }
+
+    /* Tabla responsive */
+    .performance-table-container {
+        overflow-x: auto;
+    }
+
+    .performance-table {
+        min-width: 500px;
+    }
+
+    .performance-table th,
+    .performance-table td {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    .performance-table th {
+        font-size: 0.85rem;
+    }
+
+    /* Stats en móvil */
+    .gym-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stat-card {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .stat-info h3 {
+        font-size: 1rem;
+    }
+
+    .stat-info p {
+        font-size: 0.9rem;
+    }
+
+    .coming-soon {
+        padding: 40px 15px;
+    }
+
+    .coming-soon i {
+        font-size: 3rem;
+    }
+
+    .coming-soon h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Asistencias en móvil */
+    .asistencias-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .chart-section {
+        order: -1;
+    }
+
+    .chart-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .chart-percentage {
+        font-size: 1.5rem;
+    }
+
+    .calendar-section {
+        padding: 15px;
+    }
+
+    .calendar-header h3 {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+
+    .calendar-day {
+        min-height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .calendar-days-header span {
+        font-size: 0.8rem;
+        padding: 6px 2px;
+    }
+
+    .legend-item {
+        font-size: 0.85rem;
+        gap: 8px;
+    }
+
+    .legend-color {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* Tabla de asistencias responsive */
+    .attendance-table-container {
+        overflow-x: auto;
+    }
+
+    .attendance-table {
+        min-width: 600px;
+    }
+
+    .attendance-table th,
+    .attendance-table td {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Desempeño técnico en móvil */
+    .desempeno-top-section,
+    .desempeno-bottom-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .chart-container-tech {
+        padding: 15px;
+    }
+
+    .chart-container-tech h3 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .line-chart-container,
+    .bar-chart-container {
+        height: 180px;
+    }
+
+    .body-composition-section {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .composition-chart-container canvas {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .composition-legend {
+        width: 100%;
+        align-items: center;
+    }
+
+    .player-card {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    .player-photo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .player-info h4 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .detail-item {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+}

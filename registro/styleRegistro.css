@@ -1,0 +1,376 @@
+/* Reset y estilos generales para la página de registro */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Variables de color */
+:root {
+    --primary-color: #58AF31;
+    --dark-color: #000000;
+    --light-color: #fff;
+    --gray-color: #f4f4f4;
+}
+
+/* Página de Registro */
+.registro-body {
+    background-color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.registro-header {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.registro-nav {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--light-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 15px;
+}
+
+.registro-nav .logo {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.registro-nav .logo span {
+    color: var(--primary-color);
+}
+
+.page-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+.registro-main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.registro-container {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.profile-photo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.photo-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #999;
+    position: relative;
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 0;
+    right: 110px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.field-label {
+  
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 1rem;
+    pointer-events: none;
+    z-index: 1;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 15px 15px 10px; /* Espacio para el label */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f8f8;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-select {
+    width: 100%;
+    padding: 15px 40px 15px 120px; /* Espacio para label y flecha */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f8f8;
+    appearance: none;
+    cursor: pointer;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #4a9629;
+}
+
+/* Estilos para los pasos del formulario */
+.form-step {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos para los selects */
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f8f8;
+    appearance: none;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 65%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;    
+    z-index: 2;
+}
+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    pointer-events: none;
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+/* Botón de navegación anterior */
+.prev-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Contenedor de navegación del paso 2 */
+.form-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Botón de siguiente paso (flecha derecha sola) */
+.nextpage-btn {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--light-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0;
+}
+
+.nextpage-btn:hover {
+    background-color: #4a9629;
+}
+
+/* Ajuste del botón submit en el paso 2 */
+.submit-btn {
+    flex: 1;
+    margin-left: 20px;
+}
+
+/* Media Queries para desktop */
+@media (min-width: 768px) {
+    .registro-nav {
+        padding: 20px 30px;
+    }
+
+    .registro-nav .logo {
+        font-size: 1.4rem;
+    }
+
+    .page-title {
+        font-size: 1.2rem;
+    }
+
+    .registro-main {
+        padding: 40px;
+    }
+
+    .registro-container {
+        max-width: 500px;
+        padding: 40px 30px;
+    }
+
+    .profile-photo {
+        margin-bottom: 40px;
+    }
+
+    .photo-placeholder {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+
+    .camera-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        right: 130px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group input {
+        padding: 18px 18px 18px 10px;
+        font-size: 1.1rem;
+    }
+
+    .form-select {
+        padding: 18px 40px 18px 10px;
+        font-size: 1.1rem;
+    }
+
+    .field-label {
+        font-size: 1.1rem;
+       
+    }
+
+    .select-arrow {
+        right: 18px;
+    }
+
+    .nextpage-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+    }
+
+    .prev-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+}

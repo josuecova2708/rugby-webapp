@@ -1,0 +1,91 @@
+/* Estilos específicos para la página de perfil */
+
+/* Main content del perfil */
+.perfil-main {
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+    background-color: var(--gray-color);
+}
+
+.perfil-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.perfil-container h1 {
+    color: var(--dark-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+a,
+a:visited,
+a:active,
+a:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+
+}
+
+.perfil-container p {
+    color: #666;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.user-avatar {
+    width: 100px;
+    height: 100px;
+}
+
+.perfil-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Media queries para responsive */
+@media (min-width: 768px) {
+    .perfil-main {
+        padding: 40px;
+    }
+
+    .perfil-container {
+        padding: 50px;
+    }
+
+    .perfil-container h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .user-avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .perfil-menu {
+        font-size: 1.5rem;
+    }
+}

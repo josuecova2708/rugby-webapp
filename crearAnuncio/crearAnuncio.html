@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Anuncio - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleCrearAnuncio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="crear-anuncio-main">
+        <div class="crear-anuncio-container">
+            <!-- Header con botón de volver -->
+            <div class="crear-anuncio-header">
+                <button class="back-btn" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Crear Anuncio</h1>
+            </div>
+
+            <!-- Formulario de creación de anuncio -->
+            <form class="anuncio-form" id="anuncioForm">
+                
+                <!-- Selector de tipo de mensaje -->
+                <div class="form-group">
+                    <label class="field-label">Tipo de mensaje</label>
+                    <div class="select-container">
+                        <select class="form-select" id="tipoMensaje" required>
+                            <option value="">Seleccionar tipo</option>
+                            <option value="difusion">Difusión</option>
+                            <option value="recordatorio">Recordatorio</option>
+                            <option value="alerta-urgente">Alerta urgente</option>
+                            <option value="mensaje-directo">Mensaje directo</option>
+                            <option value="valoracion-entrenamiento">Valoración de entrenamiento</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- Contenedor para campos condicionales -->
+                <div class="conditional-fields" id="conditionalFields">
+                    
+                    <!-- Campo de hora para recordatorio -->
+                    <div class="form-group conditional-field" id="horaRecordatorio" style="display: none;">
+                        <label class="field-label">Hora del recordatorio</label>
+                        <div class="time-input-container">
+                            <input type="time" class="form-input time-input" id="horaInput">
+                            <i class="fas fa-clock time-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Campo de jugador para mensaje directo -->
+                    <div class="form-group conditional-field" id="jugadorDestino" style="display: none;">
+                        <label class="field-label">Destinatario</label>
+                        <div class="select-container">
+                            <select class="form-select" id="jugadorSelect">
+                                <option value="">Seleccionar jugador</option>
+                                <option value="juan-serra">Juan Serra</option>
+                                <option value="mario-coronel">Mario Coronel</option>
+                                <option value="agustin-montenegro">Agustín Montenegro</option>
+                                <option value="lucas-gonzalez">Lucas González</option>
+                                <option value="luciano-valdez">Luciano Valdez</option>
+                                <option value="federico-martin">Federico Martín</option>
+                                <option value="carlos-rodriguez">Carlos Rodríguez</option>
+                                <option value="diego-fernandez">Diego Fernández</option>
+                                <option value="sebastian-garcia">Sebastián García</option>
+                                <option value="nicolas-torres">Nicolás Torres</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <!-- Campo de título para difusión y alerta urgente -->
+                    <div class="form-group conditional-field" id="tituloAnuncio" style="display: none;">
+                        <label class="field-label">Título del anuncio</label>
+                        <input type="text" class="form-input" id="tituloInput" placeholder="Ingresa el título del anuncio">
+                    </div>
+
+                </div>
+
+                <!-- Área de texto para el mensaje -->
+                <div class="form-group">
+                    <label class="field-label">Mensaje</label>
+                    <div class="textarea-container">
+                        <textarea class="form-textarea" id="mensajeTexto" placeholder="Escribe tu mensaje aquí..." rows="8" required></textarea>
+                        <div class="character-counter">
+                            <span id="charCount">0</span>/500
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="window.location.href='../index.html'">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn-enviar">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Mensaje de valoración de entrenamiento -->
+            <div class="valoracion-placeholder" id="valoracionPlaceholder" style="display: none;">
+                <div class="placeholder-content">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Valoración de Entrenamiento</h3>
+                    <p>Esta funcionalidad estará disponible próximamente. Podrás evaluar el rendimiento de los jugadores después de cada entrenamiento.</p>
+                    <button class="btn-volver" onclick="resetForm()">
+                        <i class="fas fa-arrow-left"></i>
+                        Volver
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado o no es entrenador, redirigir
+            if (!auth.isLoggedIn() || !auth.isCoach()) {
+                alert('Solo los entrenadores pueden acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar navegación
+            auth.updateNavigation();
+            initializeForm();
+        });
+
+        // Inicializar funcionalidad del formulario
+        function initializeForm() {
+            const tipoMensaje = document.getElementById('tipoMensaje');
+            const mensajeTexto = document.getElementById('mensajeTexto');
+            const charCount = document.getElementById('charCount');
+            const anuncioForm = document.getElementById('anuncioForm');
+            const valoracionPlaceholder = document.getElementById('valoracionPlaceholder');
+
+            // Manejar cambio en tipo de mensaje
+            tipoMensaje.addEventListener('change', function() {
+                handleTipoMensajeChange(this.value);
+            });
+
+            // Contador de caracteres
+            mensajeTexto.addEventListener('input', function() {
+                const currentLength = this.value.length;
+                charCount.textContent = currentLength;
+                
+                if (currentLength > 500) {
+                    charCount.style.color = '#dc3545';
+                    this.style.borderColor = '#dc3545';
+                } else {
+                    charCount.style.color = '#6c757d';
+                    this.style.borderColor = '#ddd';
+                }
+            });
+
+            // Manejar envío del formulario
+            anuncioForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleFormSubmit();
+            });
+        }
+
+        // Manejar cambio en tipo de mensaje
+        function handleTipoMensajeChange(tipo) {
+            const anuncioForm = document.getElementById('anuncioForm');
+            const valoracionPlaceholder = document.getElementById('valoracionPlaceholder');
+            
+            // Ocultar todos los campos condicionales
+            hideAllConditionalFields();
+
+            if (tipo === 'valoracion-entrenamiento') {
+                // Mostrar placeholder para valoración
+                anuncioForm.style.display = 'none';
+                valoracionPlaceholder.style.display = 'flex';
+                return;
+            } else {
+                // Mostrar formulario normal
+                anuncioForm.style.display = 'block';
+                valoracionPlaceholder.style.display = 'none';
+            }
+
+            // Mostrar campos específicos según el tipo
+            switch(tipo) {
+                case 'recordatorio':
+                    showField('horaRecordatorio');
+                    break;
+                case 'mensaje-directo':
+                    showField('jugadorDestino');
+                    break;
+                case 'difusion':
+                case 'alerta-urgente':
+                    showField('tituloAnuncio');
+                    break;
+            }
+        }
+
+        // Ocultar todos los campos condicionales
+        function hideAllConditionalFields() {
+            const conditionalFields = document.querySelectorAll('.conditional-field');
+            conditionalFields.forEach(field => {
+                field.style.display = 'none';
+                // Limpiar valores
+                const inputs = field.querySelectorAll('input, select');
+                inputs.forEach(input => input.value = '');
+            });
+        }
+
+        // Mostrar campo específico
+        function showField(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.style.display = 'block';
+            
+            // Hacer el campo requerido
+            const inputs = field.querySelectorAll('input, select');
+            inputs.forEach(input => input.required = true);
+        }
+
+        // Manejar envío del formulario
+        function handleFormSubmit() {
+            const tipoMensaje = document.getElementById('tipoMensaje').value;
+            const mensajeTexto = document.getElementById('mensajeTexto').value;
+
+            // Validar longitud del mensaje
+            if (mensajeTexto.length > 500) {
+                alert('El mensaje no puede exceder los 500 caracteres');
+                return;
+            }
+
+            // Construir objeto de datos
+            const anuncioData = {
+                tipo: tipoMensaje,
+                mensaje: mensajeTexto,
+                fecha: new Date().toISOString(),
+                entrenador: auth.getCurrentUser().name
+            };
+
+            // Agregar campos específicos según el tipo
+            switch(tipoMensaje) {
+                case 'recordatorio':
+                    const hora = document.getElementById('horaInput').value;
+                    if (!hora) {
+                        alert('Debes seleccionar una hora para el recordatorio');
+                        return;
+                    }
+                    anuncioData.hora = hora;
+                    break;
+
+                case 'mensaje-directo':
+                    const jugador = document.getElementById('jugadorSelect').value;
+                    if (!jugador) {
+                        alert('Debes seleccionar un destinatario');
+                        return;
+                    }
+                    anuncioData.destinatario = jugador;
+                    break;
+
+                case 'difusion':
+                case 'alerta-urgente':
+                    const titulo = document.getElementById('tituloInput').value;
+                    if (!titulo.trim()) {
+                        alert('Debes ingresar un título para el anuncio');
+                        return;
+                    }
+                    anuncioData.titulo = titulo;
+                    break;
+            }
+
+            // Simular envío (aquí iría la llamada al backend)
+            console.log('Datos del anuncio:', anuncioData);
+            
+            // Mostrar mensaje de éxito
+            showSuccessMessage(anuncioData);
+        }
+
+        // Mostrar mensaje de éxito
+        function showSuccessMessage(data) {
+            let mensaje = `Anuncio de tipo "${data.tipo}" enviado exitosamente.`;
+            
+            if (data.destinatario) {
+                mensaje += ` Destinatario: ${data.destinatario}`;
+            }
+            if (data.hora) {
+                mensaje += ` Programado para las ${data.hora}`;
+            }
+            if (data.titulo) {
+                mensaje += ` Título: "${data.titulo}"`;
+            }
+
+            alert(mensaje);
+
+            // Resetear formulario
+            resetForm();
+        }
+
+        // Resetear formulario
+        function resetForm() {
+            document.getElementById('anuncioForm').reset();
+            document.getElementById('anuncioForm').style.display = 'block';
+            document.getElementById('valoracionPlaceholder').style.display = 'none';
+            document.getElementById('charCount').textContent = '0';
+            hideAllConditionalFields();
+        }
+
+        // Función para el backend: enviar anuncio
+        async function enviarAnuncio(anuncioData) {
+            try {
+                // Esta función será implementada cuando se conecte con el backend
+                const response = await fetch('/api/anuncios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getAuthToken()}`
+                    },
+                    body: JSON.stringify(anuncioData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al enviar el anuncio');
+                }
+
+                return await response.json();
+            } catch (error) {
+                console.error('Error:', error);
+                throw error;
+            }
+        }
+
+        // Función para obtener token de autenticación (placeholder)
+        function getAuthToken() {
+            // Esta función será implementada con el sistema de autenticación real
+            return 'placeholder-token';
+        }
+    </script>
+</body>
+
+</html>

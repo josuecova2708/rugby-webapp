@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Noticia - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleCrearNews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="crear-news-main">
+        <div class="crear-news-container">
+            
+            <!-- Header con botón de volver -->
+            <div class="crear-news-header">
+                <button class="back-btn" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Crear Noticia</h1>
+            </div>
+
+            <!-- Contenedor principal con borde verde -->
+            <div class="news-form-container">
+                
+                <!-- Sección de imágenes -->
+                <div class="images-section">
+                    <!-- Imagen principal -->
+                    <div class="main-image-container">
+                        <div class="image-upload-area" id="mainImageArea" onclick="openFileSelector('mainImage')">
+                            <img id="mainImagePreview" style="display: none;" alt="Vista previa">
+                            <div class="upload-placeholder" id="mainUploadPlaceholder">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-image"></i>
+                                </div>
+                                <div class="delete-btn" id="mainDeleteBtn" style="display: none;" onclick="deleteImage('main', event)">
+                                    <i class="fas fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="file" id="mainImage" accept="image/*" style="display: none;" onchange="handleImageUpload('main', this)">
+                    </div>
+
+                    <!-- Imagen adicional con botón + -->
+                    <div class="additional-image-container">
+                        <div class="image-upload-area" id="additionalImageArea" onclick="openFileSelector('additionalImage')">
+                            <img id="additionalImagePreview" style="display: none;" alt="Vista previa">
+                            <div class="upload-placeholder" id="additionalUploadPlaceholder">
+                                <div class="add-image-btn">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="delete-btn" id="additionalDeleteBtn" style="display: none;" onclick="deleteImage('additional', event)">
+                                    <i class="fas fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="file" id="additionalImage" accept="image/*" style="display: none;" onchange="handleImageUpload('additional', this)">
+                    </div>
+                </div>
+
+                <!-- Sección de contenido -->
+                <div class="content-section">
+                    <!-- Input de título -->
+                    <div class="title-input-container">
+                        <input type="text" id="newsTitle" placeholder="Nuevo Gimnasio en Marcha" class="title-input">
+                    </div>
+
+                    <!-- Textarea de contenido -->
+                    <div class="content-input-container">
+                        <textarea 
+                            id="newsContent" 
+                            placeholder="Nos complace anunciar que la construcción del nuevo gimnasio del club ha comenzado oficialmente. Este espacio estará equipado con máquinas de última generación, áreas de entrenamiento funcional y un sector exclusivo para la recuperación física de los jugadores. El objetivo es brindar un entorno de entrenamiento de primer nivel para todas las categorías, desde juveniles hasta la primera. Se espera que la obra esté finalizada para el inicio de la próxima temporada. ¡Seguimos sumando para mejorar día a día!"
+                            rows="8">
+                        </textarea>
+                    </div>
+
+                    <!-- Botón Publicar -->
+                    <div class="publish-section">
+                        <button class="publish-btn" onclick="publishNews()">
+                            Publicar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            if (!auth.isCoach()) {
+                alert('Acceso no autorizado - Solo para entrenadores');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            auth.updateNavigation();
+        });
+
+        // Abrir selector de archivo
+        function openFileSelector(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        // Manejar carga de imagen
+        function handleImageUpload(type, input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            // Validar que sea una imagen
+            if (!file.type.startsWith('image/')) {
+                alert('Por favor selecciona un archivo de imagen válido');
+                return;
+            }
+
+            // Validar tamaño (máximo 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('La imagen debe ser menor a 5MB');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                if (type === 'main') {
+                    updateImagePreview('main', e.target.result);
+                } else if (type === 'additional') {
+                    updateImagePreview('additional', e.target.result);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Actualizar vista previa de imagen
+        function updateImagePreview(type, imageSrc) {
+            if (type === 'main') {
+                const preview = document.getElementById('mainImagePreview');
+                const placeholder = document.getElementById('mainUploadPlaceholder');
+                const deleteBtn = document.getElementById('mainDeleteBtn');
+
+                preview.src = imageSrc;
+                preview.style.display = 'block';
+                placeholder.querySelector('.image-placeholder').style.display = 'none';
+                deleteBtn.style.display = 'flex';
+            } else if (type === 'additional') {
+                const preview = document.getElementById('additionalImagePreview');
+                const placeholder = document.getElementById('additionalUploadPlaceholder');
+                const deleteBtn = document.getElementById('additionalDeleteBtn');
+
+                preview.src = imageSrc;
+                preview.style.display = 'block';
+                placeholder.querySelector('.add-image-btn').style.display = 'none';
+                deleteBtn.style.display = 'flex';
+            }
+        }
+
+        // Eliminar imagen
+        function deleteImage(type, event) {
+            event.stopPropagation();
+
+            if (type === 'main') {
+                const preview = document.getElementById('mainImagePreview');
+                const placeholder = document.getElementById('mainUploadPlaceholder');
+                const deleteBtn = document.getElementById('mainDeleteBtn');
+                const input = document.getElementById('mainImage');
+
+                preview.style.display = 'none';
+                preview.src = '';
+                placeholder.querySelector('.image-placeholder').style.display = 'flex';
+                deleteBtn.style.display = 'none';
+                input.value = '';
+            } else if (type === 'additional') {
+                const preview = document.getElementById('additionalImagePreview');
+                const placeholder = document.getElementById('additionalUploadPlaceholder');
+                const deleteBtn = document.getElementById('additionalDeleteBtn');
+                const input = document.getElementById('additionalImage');
+
+                preview.style.display = 'none';
+                preview.src = '';
+                placeholder.querySelector('.add-image-btn').style.display = 'flex';
+                deleteBtn.style.display = 'none';
+                input.value = '';
+            }
+        }
+
+        // Publicar noticia
+        function publishNews() {
+            const title = document.getElementById('newsTitle').value.trim();
+            const content = document.getElementById('newsContent').value.trim();
+            const mainImage = document.getElementById('mainImage').files[0];
+            const additionalImage = document.getElementById('additionalImage').files[0];
+
+            // Validaciones
+            if (!title) {
+                alert('Por favor ingresa un título para la noticia');
+                document.getElementById('newsTitle').focus();
+                return;
+            }
+
+            if (!content) {
+                alert('Por favor ingresa el contenido de la noticia');
+                document.getElementById('newsContent').focus();
+                return;
+            }
+
+            if (!mainImage) {
+                alert('Por favor selecciona al menos una imagen principal');
+                return;
+            }
+
+            // Crear objeto de datos para enviar
+            const newsData = {
+                title: title,
+                content: content,
+                mainImage: mainImage,
+                additionalImage: additionalImage || null,
+                publishDate: new Date().toISOString(),
+                author: auth.getCurrentUser().name
+            };
+
+            console.log('Publicando noticia:', newsData);
+            
+            // Simular publicación exitosa
+            alert('Noticia publicada correctamente');
+            
+            // Redirigir al home
+            window.location.href = '../index.html';
+
+            // Aquí iría la llamada al backend
+            // publishNewsToBackend(newsData);
+        }
+
+        // Función para enviar al backend (placeholder)
+        function publishNewsToBackend(newsData) {
+            /*
+            const formData = new FormData();
+            formData.append('title', newsData.title);
+            formData.append('content', newsData.content);
+            formData.append('mainImage', newsData.mainImage);
+            if (newsData.additionalImage) {
+                formData.append('additionalImage', newsData.additionalImage);
+            }
+            formData.append('publishDate', newsData.publishDate);
+            formData.append('author', newsData.author);
+
+            fetch('/api/news/create', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Noticia creada correctamente');
+                    window.location.href = '../index.html';
+                } else {
+                    alert('Error al crear noticia: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error de conexión al servidor');
+            });
+            */
+        }
+
+        // Contador de caracteres para el contenido (opcional)
+        document.getElementById('newsContent').addEventListener('input', function() {
+            const maxLength = 1000;
+            const currentLength = this.value.length;
+            
+            if (currentLength > maxLength) {
+                this.value = this.value.substring(0, maxLength);
+            }
+        });
+
+        // Auto-resize del textarea
+        document.getElementById('newsContent').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    </script>
+</body>
+
+</html>

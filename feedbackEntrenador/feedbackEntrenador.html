@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleFeedbackEntrenador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="feedback-main">
+        <div class="feedback-container">
+
+            <!-- Sidebar con jugadores -->
+            <div class="feedback-sidebar">
+                <div class="sidebar-header">
+                    <h2>Chats</h2>
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                </div>
+
+                <div class="players-list">
+                    <div class="player-chat-item active" data-player="juan-serra">
+                        <div class="player-name">Juan Serra</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="mario-coronel">
+                        <div class="player-name">Mario Coronel</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="agustin-montenegro">
+                        <div class="player-name">Agustín Montenegro</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="lucas-gonzalez">
+                        <div class="player-name">Lucas González</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="luciano-valdez">
+                        <div class="player-name">Luciano Valdez</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="federico-martin">
+                        <div class="player-name">Federico Martín</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="carlos-rodriguez">
+                        <div class="player-name">Carlos Rodríguez</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="diego-fernandez">
+                        <div class="player-name">Diego Fernández</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="sebastian-garcia">
+                        <div class="player-name">Sebastián García</div>
+                    </div>
+
+                    <div class="player-chat-item" data-player="nicolas-torres">
+                        <div class="player-name">Nicolás Torres</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área principal de chat -->
+            <div class="chat-area">
+                <!-- Header del chat -->
+                <div class="chat-header">
+                    <button class="back-home-btn" onclick="window.location.href='../index.html'">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="chat-info">
+                        <h3 id="chatTitle">#nombre del chat</h3>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="btn-iniciar-chat" onclick="openChatModal()">
+                            <i class="fas fa-plus"></i>
+                            Iniciar Chat
+                        </button>
+                        <button class="chat-action-btn mobile-only" onclick="toggleSidebar()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Separador de fecha -->
+                <div class="date-separator">
+                    <span>Lunes, 24 de enero de 2025</span>
+                </div>
+
+                <!-- Mensajes del chat -->
+                <div class="messages-container" id="messagesContainer">
+
+                    <!-- Mensaje del entrenador -->
+                    <div class="message coach-message">
+                        <div class="message-avatar">
+                            <img src="../recursos/coach-avatar-1.png" alt="Entrenador"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Nombre usuario 1 entrenador</span>
+                                <span class="message-time">12:10</span>
+                            </div>
+                            <div class="message-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensaje del jugador con respuestas -->
+                    <div class="message player-message">
+                        <div class="message-avatar">
+                            <img src="../recursos/player-avatar-1.png" alt="Jugador"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-fallback">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="sender-name">Nombre usuario 1 jugador</span>
+                                <span class="message-time">12:15</span>
+                            </div>
+                            <div class="message-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec Praesent libero.
+                                Sed cursus ante dapibus diam. Nunc feugiat mi a tellus consequat imperdiet
+                            </div>
+                            <div class="message-replies">
+                                <i class="fas fa-reply"></i>
+                                <span>2 respuestas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Área de escritura de mensaje (solo visual, sin funcionalidad) -->
+                <div class="message-input-area">
+                    <div class="input-container">
+                        <button class="attach-btn">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <input type="text" placeholder="Escribe tu mensaje..." class="message-input" disabled>
+                        <button class="send-btn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para iniciar nuevo chat -->
+        <div class="chat-modal-overlay" id="chatModalOverlay" onclick="closeChatModal()">
+            <div class="chat-modal" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h3>Nuevo Mensaje</h3>
+                    <button class="modal-close-btn" onclick="closeChatModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="modal-content">
+                    <!-- Selector de destino -->
+                    <div class="destination-selector">
+                        <label class="destination-label">Destino del Mensaje</label>
+                        <div class="destination-dropdown" id="destinationDropdown">
+                            <div class="dropdown-trigger" onclick="toggleDestinationDropdown()">
+                                <span id="selectedDestination">Seleccionar destino</span>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </div>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <div class="dropdown-item" onclick="selectDestination('direct', 'Mensaje directo')">
+                                    <i class="fas fa-user"></i>
+                                    <span>Mensaje directo</span>
+                                </div>
+                                <div class="dropdown-item" onclick="selectDestination('general', 'Chat general')">
+                                    <i class="fas fa-users"></i>
+                                    <span>Chat general</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Área de mensaje -->
+                    <div class="message-compose-area">
+                        <textarea 
+                            id="messageTextarea" 
+                            placeholder="Escribe tu mensaje aquí..." 
+                            rows="4"
+                            maxlength="500">
+                        </textarea>
+                        <div class="character-count">
+                            <span id="charCount">0</span>/500
+                        </div>
+                    </div>
+
+                    <!-- Botón de envío -->
+                    <div class="modal-actions">
+                        <button class="btn-cancel" onclick="closeChatModal()">
+                            Cancelar
+                        </button>
+                        <button class="btn-send" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Variables globales
+        let selectedDestinationType = null;
+        let selectedPlayer = 'juan-serra';
+
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado, redirigir al home
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder al feedback');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Verificar que sea entrenador
+            if (!auth.isCoach()) {
+                alert('Acceso no autorizado - Solo para entrenadores');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar la navegación
+            auth.updateNavigation();
+            initializeFeedbackEntrenador();
+        });
+
+        // Inicializar sistema de feedback para entrenador
+        function initializeFeedbackEntrenador() {
+            const playerItems = document.querySelectorAll('.player-chat-item');
+            const messageTextarea = document.getElementById('messageTextarea');
+
+            // Event listeners para los jugadores
+            playerItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    selectPlayerChat(this);
+                });
+            });
+
+            // Contador de caracteres
+            if (messageTextarea) {
+                messageTextarea.addEventListener('input', function() {
+                    updateCharacterCount();
+                });
+            }
+
+            // Cerrar modal con Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeChatModal();
+                }
+            });
+        }
+
+        // Seleccionar chat de jugador
+        function selectPlayerChat(playerElement) {
+            // Remover selección anterior
+            document.querySelectorAll('.player-chat-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Agregar selección actual
+            playerElement.classList.add('active');
+
+            // Actualizar título del chat
+            const playerName = playerElement.querySelector('.player-name').textContent;
+            document.getElementById('chatTitle').textContent = `#${playerName.toLowerCase().replace(' ', '-')}`;
+
+            // Guardar jugador seleccionado
+            selectedPlayer = playerElement.getAttribute('data-player');
+
+            // Cerrar sidebar en móvil después de seleccionar
+            if (window.innerWidth <= 768) {
+                toggleSidebar();
+            }
+        }
+
+        // Toggle sidebar en móvil
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.feedback-sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Abrir modal de chat
+        function openChatModal() {
+            const modal = document.getElementById('chatModalOverlay');
+            modal.classList.add('active');
+            
+            // Focus en el textarea
+            setTimeout(() => {
+                document.getElementById('messageTextarea').focus();
+            }, 100);
+        }
+
+        // Cerrar modal de chat
+        function closeChatModal() {
+            const modal = document.getElementById('chatModalOverlay');
+            modal.classList.remove('active');
+            
+            // Resetear formulario
+            resetModalForm();
+        }
+
+        // Toggle dropdown de destino
+        function toggleDestinationDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            const arrow = document.querySelector('.dropdown-arrow');
+            
+            dropdown.classList.toggle('active');
+            arrow.classList.toggle('rotated');
+        }
+
+        // Seleccionar destino
+        function selectDestination(type, displayName) {
+            selectedDestinationType = type;
+            document.getElementById('selectedDestination').textContent = displayName;
+            
+            // Cerrar dropdown
+            document.getElementById('dropdownMenu').classList.remove('active');
+            document.querySelector('.dropdown-arrow').classList.remove('rotated');
+            
+            // Actualizar estilo del botón de envío
+            updateSendButtonState();
+        }
+
+        // Actualizar contador de caracteres
+        function updateCharacterCount() {
+            const textarea = document.getElementById('messageTextarea');
+            const charCount = document.getElementById('charCount');
+            
+            charCount.textContent = textarea.value.length;
+            
+            // Cambiar color si se acerca al límite
+            if (textarea.value.length > 450) {
+                charCount.style.color = '#dc3545';
+            } else if (textarea.value.length > 400) {
+                charCount.style.color = '#ffc107';
+            } else {
+                charCount.style.color = '#6c757d';
+            }
+            
+            updateSendButtonState();
+        }
+
+        // Actualizar estado del botón de envío
+        function updateSendButtonState() {
+            const textarea = document.getElementById('messageTextarea');
+            const sendBtn = document.querySelector('.btn-send');
+            
+            const hasMessage = textarea.value.trim().length > 0;
+            const hasDestination = selectedDestinationType !== null;
+            
+            if (hasMessage && hasDestination) {
+                sendBtn.disabled = false;
+                sendBtn.classList.remove('disabled');
+            } else {
+                sendBtn.disabled = true;
+                sendBtn.classList.add('disabled');
+            }
+        }
+
+        // Enviar mensaje
+        function sendMessage() {
+            const textarea = document.getElementById('messageTextarea');
+            const message = textarea.value.trim();
+            
+            if (!message || !selectedDestinationType) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+            
+            // Simular envío de mensaje
+            console.log('Enviando mensaje:', {
+                type: selectedDestinationType,
+                player: selectedPlayer,
+                message: message,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Mostrar confirmación
+            alert(`Mensaje enviado ${selectedDestinationType === 'direct' ? 'directamente' : 'al chat general'}`);
+            
+            // Cerrar modal
+            closeChatModal();
+            
+            // Aquí iría la lógica para enviar al backend
+            // sendMessageToBackend(selectedDestinationType, selectedPlayer, message);
+        }
+
+        // Resetear formulario del modal
+        function resetModalForm() {
+            document.getElementById('messageTextarea').value = '';
+            document.getElementById('selectedDestination').textContent = 'Seleccionar destino';
+            document.getElementById('charCount').textContent = '0';
+            document.getElementById('charCount').style.color = '#6c757d';
+            
+            selectedDestinationType = null;
+            
+            // Cerrar dropdown si está abierto
+            document.getElementById('dropdownMenu').classList.remove('active');
+            document.querySelector('.dropdown-arrow').classList.remove('rotated');
+            
+            updateSendButtonState();
+        }
+
+        // Cerrar dropdown al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('destinationDropdown');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            
+            if (!dropdown.contains(event.target)) {
+                dropdownMenu.classList.remove('active');
+                document.querySelector('.dropdown-arrow').classList.remove('rotated');
+            }
+        });
+
+        // Responsive: cerrar sidebar al hacer clic fuera en móvil
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('.feedback-sidebar');
+            const chatActionBtn = document.querySelector('.chat-actions .mobile-only');
+            
+            if (window.innerWidth <= 768 && 
+                sidebar.classList.contains('active') && 
+                !sidebar.contains(event.target) && 
+                !chatActionBtn.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Función para enviar al backend (placeholder)
+        function sendMessageToBackend(type, player, message) {
+            // Esta función será implementada para enviar al backend
+            /*
+            fetch('/api/messages/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getAuthToken()}`
+                },
+                body: JSON.stringify({
+                    type: type,
+                    recipientId: type === 'direct' ? player : null,
+                    message: message,
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Mensaje enviado correctamente');
+                } else {
+                    alert('Error al enviar mensaje: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error de conexión al servidor');
+            });
+            */
+        }
+    </script>
+</body>
+
+</html>

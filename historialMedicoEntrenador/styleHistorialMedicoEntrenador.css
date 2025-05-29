@@ -1,0 +1,864 @@
+    /* Estilos específicos para la página de historial médico del entrenador */
+
+/* Main content */
+.historial-medico-main {
+    min-height: calc(100vh - 120px);
+    padding: 0;
+    background-color: var(--gray-color);
+}
+
+.historial-medico-container {
+    max-width: 100%;
+    height: calc(100vh - 120px);
+    margin: 0 auto;
+    background-color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.historial-medico-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: var(--light-color);
+    border-bottom: 1px solid #e9ecef;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.back-btn:hover {
+    background-color: #f8f9fa;
+    transform: translateX(-2px);
+}
+
+.historial-medico-header h1 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    font-weight: 600;
+    flex: 1;
+    text-align: center;
+}
+
+.search-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.search-input {
+    padding: 8px 35px 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(88, 175, 49, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    pointer-events: none;
+}
+
+/* Layout principal */
+.content-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar de jugadores */
+.players-sidebar {
+    width: 350px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+    background-color: var(--light-color);
+}
+
+.sidebar-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+    color: var(--dark-color);
+}
+
+.players-count {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Lista de jugadores */
+.players-list {
+    flex: 1;
+    padding: 10px 0;
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e9ecef;
+    position: relative;
+}
+
+.player-item:hover {
+    background-color: #e9ecef;
+}
+
+.player-item.active {
+    background-color: rgba(88, 175, 49, 0.1);
+    border-left: 4px solid var(--primary-color);
+}
+
+.player-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.player-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.player-position {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.medical-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.medical-status i {
+    font-size: 0.75rem;
+}
+
+/* Estados médicos */
+.status-apto {
+    color: var(--primary-color);
+}
+
+.status-revision {
+    color: #ffc107;
+}
+
+.status-lesionado {
+    color: #dc3545;
+}
+
+.status-vencido {
+    color: #fd7e14;
+}
+
+.view-link {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.view-link span {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.player-item:hover .view-link {
+    opacity: 1;
+}
+
+/* Panel de historial médico */
+.medical-history-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: var(--light-color);
+}
+
+.medical-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+    background-color: var(--light-color);
+    flex-shrink: 0;
+}
+
+.medical-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.medical-title i {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.medical-title h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.medical-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-export,
+.btn-print {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-export:hover,
+.btn-print:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Contenido médico */
+.medical-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.medical-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #e9ecef;
+}
+
+.medical-section h4 {
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.medical-section h4 i {
+    color: var(--primary-color);
+}
+
+/* Información básica */
+.section-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.last-update {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.health-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.status-icon-apto {
+    color: var(--primary-color);
+}
+
+.status-icon-revision {
+    color: #ffc107;
+}
+
+.status-icon-lesionado {
+    color: #dc3545;
+}
+
+.status-icon-vencido {
+    color: #fd7e14;
+}
+
+/* Lista de lesiones */
+.injury-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.injury-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.injury-date {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.injury-description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.injury-description strong {
+    color: var(--dark-color);
+    font-size: 0.95rem;
+}
+
+.injury-status {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.injury-status.recovered {
+    background-color: rgba(88, 175, 49, 0.1);
+    color: var(--primary-color);
+}
+
+.injury-status.active {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.injury-status.pending {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+/* Lista de tratamientos */
+.treatment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.treatment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.treatment-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.treatment-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.treatment-info strong {
+    color: var(--dark-color);
+    font-size: 0.95rem;
+}
+
+.treatment-info span {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Lista de observaciones */
+.observations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.observation-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.observation-item i {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.observation-item span {
+    color: var(--dark-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Último chequeo médico */
+.medical-check {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(88, 175, 49, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(88, 175, 49, 0.2);
+}
+
+.medical-check i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.check-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.check-info strong {
+    color: var(--dark-color);
+    font-size: 1rem;
+}
+
+.check-info span {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Estado sin selección */
+.no-selection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    text-align: center;
+    padding: 40px;
+}
+
+.no-selection i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+    color: var(--primary-color);
+}
+
+.no-selection p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Responsive - Móvil */
+@media (max-width: 768px) {
+    .historial-medico-container {
+        height: calc(100vh - 120px);
+    }
+
+    .historial-medico-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .historial-medico-header h1 {
+        font-size: 1.2rem;
+        text-align: center;
+        order: 1;
+    }
+
+    .back-btn {
+        align-self: flex-start;
+        order: 0;
+    }
+
+    .search-container {
+        order: 2;
+        width: 100%;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .content-layout {
+        flex-direction: column;
+    }
+
+    .players-sidebar {
+        width: 100%;
+        max-height: 40vh;
+        order: 1;
+    }
+
+    .sidebar-header {
+        padding: 15px;
+    }
+
+    .sidebar-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .player-item {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+
+    .player-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .player-name {
+        font-size: 0.95rem;
+    }
+
+    .player-position {
+        font-size: 0.8rem;
+    }
+
+    .medical-status {
+        font-size: 0.75rem;
+    }
+
+    .view-link {
+        display: none;
+    }
+
+    .medical-history-panel {
+        order: 2;
+        flex: 1;
+    }
+
+    .medical-header {
+        padding: 15px;
+    }
+
+    .medical-title h3 {
+        font-size: 1.1rem;
+    }
+
+    .medical-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn-export,
+    .btn-print {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .medical-content {
+        padding: 15px;
+    }
+
+    .medical-section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .medical-section h4 {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    .section-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .injury-item,
+    .treatment-item,
+    .observation-item {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .injury-date {
+        min-width: 70px;
+        font-size: 0.8rem;
+    }
+
+    .injury-description strong,
+    .treatment-info strong {
+        font-size: 0.9rem;
+    }
+
+    .treatment-info span,
+    .observation-item span {
+        font-size: 0.85rem;
+    }
+
+    .medical-check {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .medical-check i {
+        font-size: 1.3rem;
+    }
+
+    .check-info strong {
+        font-size: 0.95rem;
+    }
+
+    .check-info span {
+        font-size: 0.85rem;
+    }
+
+    .no-selection {
+        padding: 30px 20px;
+    }
+
+    .no-selection i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .no-selection p {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .players-sidebar {
+        width: 300px;
+    }
+
+    .medical-header {
+        padding: 18px;
+    }
+
+    .medical-content {
+        padding: 18px;
+    }
+}
+
+/* Responsive para móviles muy pequeños */
+@media (max-width: 480px) {
+    .historial-medico-header h1 {
+        font-size: 1.1rem;
+    }
+
+    .players-sidebar {
+        max-height: 35vh;
+    }
+
+    .sidebar-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .player-item {
+        padding: 10px 12px;
+    }
+
+    .medical-header {
+        padding: 12px;
+    }
+
+    .medical-title h3 {
+        font-size: 1rem;
+    }
+
+    .medical-content {
+        padding: 12px;
+    }
+
+    .medical-section {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .injury-item,
+    .treatment-item,
+    .observation-item,
+    .medical-check {
+        padding: 10px;
+    }
+}
+
+/* Scrollbar personalizado */
+.players-sidebar::-webkit-scrollbar,
+.medical-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.players-sidebar::-webkit-scrollbar-track,
+.medical-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.players-sidebar::-webkit-scrollbar-thumb,
+.medical-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.players-sidebar::-webkit-scrollbar-thumb:hover,
+.medical-content::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Animaciones */
+.player-item {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.medical-section {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estados de hover mejorados */
+.player-item:not(.active):hover {
+    transform: translateX(5px);
+}
+
+.medical-section:hover {
+    border-left-color: var(--primary-color);
+}
+
+/* Print styles */
+@media print {
+    .historial-medico-main {
+        padding: 0;
+        background: white;
+    }
+
+    .back-btn,
+    .search-container,
+    .medical-actions,
+    .players-sidebar {
+        display: none;
+    }
+
+    .historial-medico-container {
+        height: auto;
+        box-shadow: none;
+    }
+
+    .content-layout {
+        flex-direction: column;
+    }
+
+    .medical-history-panel {
+        width: 100%;
+    }
+
+    .medical-header {
+        border-bottom: 2px solid #ddd;
+    }
+
+    .medical-section {
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,365 @@
+/* Estilos específicos para registro de entrenador */
+
+/* Ajustes específicos para el formulario de entrenador */
+.registro-container {
+    max-width: 450px;
+}
+
+/* Estilos para campos con botón "Modificar" */
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 80px 15px 10px; /* Espacio extra para el botón modificar */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--light-color);
+    box-shadow: 0 0 0 3px rgba(88, 175, 49, 0.1);
+}
+
+/* Botón Modificar */
+.modify-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.modify-btn:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #0056b3;
+}
+
+/* Labels mejorados */
+.field-label {
+    position: absolute;
+    left: 12px;
+    top: -8px;
+    background-color: var(--light-color);
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0 6px;
+    z-index: 3;
+    border-radius: 4px;
+}
+
+/* Selects con mejor estilo */
+.form-select {
+    width: 100%;
+    padding: 15px 40px 15px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: var(--light-color);
+    box-shadow: 0 0 0 3px rgba(88, 175, 49, 0.1);
+}
+
+.form-select option {
+    padding: 10px;
+    background-color: var(--light-color);
+    color: #333;
+}
+
+/* Flecha del select */
+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    pointer-events: none;
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
+/* Toggle password mejorado */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.toggle-password:hover {
+    background-color: rgba(88, 175, 49, 0.1);
+}
+
+/* Foto de perfil mejorada */
+.profile-photo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.photo-placeholder {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 3px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #adb5bd;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.photo-placeholder:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: linear-gradient(135deg, var(--primary-color), #4a9629);
+    color: var(--light-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.camera-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones de navegación mejorados */
+.nextpage-btn {
+    background: linear-gradient(135deg, var(--primary-color), #4a9629);
+    border: none;
+    color: var(--light-color);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(88, 175, 49, 0.3);
+}
+
+.nextpage-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(88, 175, 49, 0.4);
+}
+
+.prev-btn {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.prev-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    flex: 1;
+    margin-left: 20px;
+    background: linear-gradient(135deg, var(--primary-color), #4a9629);
+    color: var(--light-color);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(88, 175, 49, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(88, 175, 49, 0.4);
+}
+
+/* Placeholders personalizados */
+.form-group input::placeholder {
+    color: #adb5bd;
+    font-style: italic;
+}
+
+/* Animaciones de transición entre pasos */
+.form-step {
+    transition: all 0.4s ease-in-out;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.form-step.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+/* Estados de validación */
+.form-group input.error,
+.form-group select.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+
+.form-group input.success,
+.form-group select.success {
+    border-color: var(--primary-color);
+    background-color: #f0f8f0;
+}
+
+/* Media Queries para desktop */
+@media (min-width: 768px) {
+    .registro-container {
+        max-width: 550px;
+        padding: 50px 40px;
+    }
+
+    .photo-placeholder {
+        width: 120px;
+        height: 120px;
+        font-size: 3rem;
+    }
+
+    .camera-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        bottom: 8px;
+        right: 8px;
+    }
+
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    .form-group input,
+    .form-select {
+        padding: 18px 90px 18px 15px;
+        font-size: 1.1rem;
+    }
+
+    .field-label {
+        font-size: 1rem;
+        left: 15px;
+        top: -10px;
+    }
+
+    .modify-btn {
+        right: 15px;
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .nextpage-btn,
+    .prev-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.6rem;
+    }
+
+    .submit-btn {
+        padding: 18px 30px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive para móviles pequeños */
+@media (max-width: 480px) {
+    .registro-container {
+        margin: 10px;
+        padding: 20px 15px;
+    }
+
+    .form-group input {
+        padding: 12px 70px 12px 8px;
+        font-size: 0.9rem;
+    }
+
+    .field-label {
+        font-size: 0.8rem;
+        left: 10px;
+    }
+
+    .modify-btn {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+
+    .photo-placeholder {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .camera-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+    }
+}

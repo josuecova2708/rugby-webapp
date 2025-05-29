@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Entrenador - Rugby 360</title>
+    <link rel="stylesheet" href="../registro/styleRegistro.css">
+    <link rel="stylesheet" href="./styleRegistroEntrenador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="registro-body">
+    <header class="registro-header">
+        <nav class="registro-nav">
+            <button class="back-btn" onclick="window.location.href='../index.html'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="logo">RUGBY <span>360</span></div>
+            <h1 class="page-title">Registro Entrenador</h1>
+        </nav>
+    </header>
+
+    <main class="registro-main">
+        <div class="registro-container">
+            <form class="registro-form" id="entrenadorForm">
+                <!-- Paso 1: Datos personales -->
+                <div class="form-step" id="step-1">
+                    <div class="profile-photo">
+                        <div class="photo-placeholder" id="photoPreview">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="camera-icon" onclick="document.getElementById('photoInput').click()">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">E-mail</label>
+                        <input type="email" id="email" placeholder="nombre22@gmail.com" required>
+           
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Contraseña</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Número de móvil:</label>
+                        <input type="tel" id="mobile" placeholder="+54 9 11 6123-4567" required>
+       
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Nombre y apellido</label>
+                        <input type="text" id="fullName" placeholder="Nombre y apellido" required>
+                     
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Fecha de nacimiento:</label>
+                        <input type="date" id="birthDate" placeholder="DD/MM/YYYY" required>
+                       
+                    </div>
+
+                    <button type="button" class="nextpage-btn" id="next-step">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Paso 2: Información del entrenador -->
+                <div class="form-step hidden" id="step-2">
+                    <div class="profile-photo">
+                        <div class="photo-placeholder" id="photoPreview2">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="camera-icon" onclick="document.getElementById('photoInput2').click()">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <input type="file" id="photoInput2" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Área de especialización</label>
+                        <select class="form-select" id="specialization" required>
+                            <option value="">Segunda línea 4</option>
+                            <option value="tecnica-general">Técnica general</option>
+                            <option value="tecnica-defensiva">Técnica defensiva</option>
+                            <option value="tecnica-ataque">Técnica ataque</option>
+                            <option value="tecnica-destrezas">Técnica destrezas individuales</option>
+                            <option value="tecnica-fisica">Técnica física</option>
+                            <option value="coach">Coach</option>
+                            <option value="kinesiologia">Kinesiología</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Nivel de certificación</label>
+                        <select class="form-select" id="certification" required>
+                            <option value="">Certificación</option>
+                            <option value="certificacion-1">Certificación 1</option>
+                            <option value="certificacion-2">Certificación 2</option>
+                            <option value="certificacion-3">Certificación 3</option>
+                            <option value="certificacion-4">Certificación 4</option>
+                            <option value="certificacion-5">Certificación 5</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Disponibilidad</label>
+                        <input type="text" id="availability" placeholder="Horarios" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Obra social</label>
+                        <input type="text" id="healthInsurance" placeholder="Obra social" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Número de obra social</label>
+                        <input type="text" id="insuranceNumber" placeholder="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Jugadores o equipos asignados</label>
+                        <select class="form-select" id="assignedTeams" required>
+                            <option value="">Jugadores o equipos asignados</option>
+                            <option value="m19">M19</option>
+                            <option value="m21">M21</option>
+                            <option value="primera">Primera</option>
+                            <option value="veteranos">Veteranos</option>
+                            <option value="todos">Todos los equipos</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="prev-btn" id="prev-step">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Registrarme</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Navegación entre pasos
+        document.getElementById('next-step').addEventListener('click', function() {
+            // Validar paso 1
+            const step1Inputs = document.querySelectorAll('#step-1 input[required]');
+            let isValid = true;
+            
+            step1Inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#dc3545';
+                } else {
+                    input.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (isValid) {
+                document.getElementById('step-1').classList.add('hidden');
+                document.getElementById('step-2').classList.remove('hidden');
+                // Sincronizar foto entre pasos
+                const photo1 = document.getElementById('photoPreview').innerHTML;
+                document.getElementById('photoPreview2').innerHTML = photo1;
+            } else {
+                alert('Por favor completa todos los campos requeridos');
+            }
+        });
+
+        document.getElementById('prev-step').addEventListener('click', function() {
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-1').classList.remove('hidden');
+            // Sincronizar foto entre pasos
+            const photo2 = document.getElementById('photoPreview2').innerHTML;
+            document.getElementById('photoPreview').innerHTML = photo2;
+        });
+
+        // Manejo de foto de perfil
+        function handlePhotoUpload(inputId, previewId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.innerHTML = `<img src="${e.target.result}" alt="Foto de perfil" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+                        // Sincronizar con el otro paso
+                        const otherPreview = previewId === 'photoPreview' ? 'photoPreview2' : 'photoPreview';
+                        document.getElementById(otherPreview).innerHTML = preview.innerHTML;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Inicializar manejadores de foto
+        handlePhotoUpload('photoInput', 'photoPreview');
+        handlePhotoUpload('photoInput2', 'photoPreview2');
+
+        // Toggle password visibility
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Envío del formulario
+        document.getElementById('entrenadorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validar paso 2
+            const step2Inputs = document.querySelectorAll('#step-2 input[required], #step-2 select[required]');
+            let isValid = true;
+            
+            step2Inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#dc3545';
+                } else {
+                    input.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (isValid) {
+                // Aquí iría la lógica para enviar al backend
+                alert('Registro de entrenador completado exitosamente!');
+                // Opcional: redirigir al login
+                // window.location.href = '../login/login.html';
+            } else {
+                alert('Por favor completa todos los campos requeridos');
+            }
+        });
+
+        // Funcionalidad de botones "Modificar"
+   
+    </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Datos - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleDatosPerfilEntrenador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="datos-main">
+        <div class="datos-container">
+            <!-- Header con botón de volver -->
+            <div class="datos-header">
+                <button class="back-btn" onclick="window.location.href='../perfil/perfil.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Mis Datos - Entrenador</h1>
+            </div>
+
+            <!-- Formulario de datos del entrenador -->
+            <form class="datos-form" id="datosEntrenadorForm">
+
+                <!-- Sección de Información Personal -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-user"></i> Información Personal</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Nombre completo:</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Fecha de nacimiento:</label>
+                        <input type="date" id="birthDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Email:</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Teléfono móvil:</label>
+                        <input type="tel" id="mobile" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Contraseña:</label>
+                        <input type="password" id="password" required>
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sección de Información Profesional -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chalkboard-teacher"></i> Información Profesional</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Área de especialización:</label>
+                        <select class="form-select" id="specialization" required>
+                            <option value="">Seleccionar especialización</option>
+                            <option value="tecnica-general">Técnica general</option>
+                            <option value="tecnica-defensiva">Técnica defensiva</option>
+                            <option value="tecnica-ataque">Técnica ataque</option>
+                            <option value="tecnica-destrezas">Técnica destrezas individuales</option>
+                            <option value="tecnica-fisica">Técnica física</option>
+                            <option value="gimnasio">Gimnasio</option>
+                            <option value="coach">Coach</option>
+                            <option value="kinesiologia">Kinesiología</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Nivel de certificación:</label>
+                        <select class="form-select" id="certification" required>
+                            <option value="">Seleccionar certificación</option>
+                            <option value="certificacion-1">Certificación 1</option>
+                            <option value="certificacion-2">Certificación 2</option>
+                            <option value="certificacion-3">Certificación 3</option>
+                            <option value="certificacion-4">Certificación 4</option>
+                            <option value="certificacion-5">Certificación 5</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="field-label">Años de experiencia:</label>
+                            <input type="number" id="yearsExperience" min="0" max="50" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="field-label">Fecha de inicio:</label>
+                            <input type="date" id="startDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox-group-container">
+                        <label class="field-label">Equipos/Categorías asignadas:</label>
+                        <div class="checkbox-group" id="assignedTeams">
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="m19">
+                                <span class="checkmark"></span>
+                                M19
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="m21">
+                                <span class="checkmark"></span>
+                                M21
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="primera">
+                                <span class="checkmark"></span>
+                                Primera
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="veteranos">
+                                <span class="checkmark"></span>
+                                Veteranos
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" value="femenino">
+                                <span class="checkmark"></span>
+                                Femenino
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group textarea-container">
+                        <label class="field-label">Horarios de disponibilidad:</label>
+                        <textarea id="availability" rows="3" placeholder="Ej: Lunes a Viernes 16:00-20:00, Sábados 09:00-13:00" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Sección de Información Médica/Seguro -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-heartbeat"></i> Información Médica y Seguro</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Obra social:</label>
+                        <input type="text" id="healthInsurance" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Número de obra social:</label>
+                        <input type="text" id="insuranceNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="field-label">Certificado médico de aptitud:</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="medicalCertificate" accept=".pdf,.jpg,.jpeg,.png" class="file-input">
+                            <label for="medicalCertificate" class="file-label">
+                                <i class="fas fa-upload"></i>
+                                <span>Subir certificado</span>
+                            </label>
+                            <span class="file-name" id="certificateFileName">Ningún archivo seleccionado</span>
+                        </div>
+                    </div>
+
+               
+
+                <!-- Botones de acción -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="window.location.href='../perfil/perfil.html'">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-save"></i>
+                        Guardar cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado, redirigir al home
+            if (!auth.isLoggedIn()) {
+                alert('Debes iniciar sesión para acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Verificar que sea entrenador
+            if (!auth.isCoach()) {
+                alert('Acceso no autorizado - Solo para entrenadores');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar la navegación y cargar datos
+            auth.updateNavigation();
+            loadCoachData();
+            initializeFormHandlers();
+        });
+
+        // Cargar datos del entrenador en el formulario
+        function loadCoachData() {
+            const coach = auth.getCurrentUser();
+            if (coach) {
+                // Datos personales
+                document.getElementById('fullName').value = coach.name || '';
+                document.getElementById('birthDate').value = coach.birthDate || '';
+                document.getElementById('email').value = coach.email || '';
+                document.getElementById('mobile').value = coach.mobile || '';
+                document.getElementById('password').value = coach.password || '';
+
+                // Datos profesionales
+                document.getElementById('specialization').value = coach.specialization || '';
+                document.getElementById('certification').value = coach.certification || '';
+                document.getElementById('yearsExperience').value = coach.yearsOfExperience || '';
+                document.getElementById('startDate').value = coach.registrationDate || '';
+                document.getElementById('availability').value = coach.availability || '';
+
+                // Equipos asignados (checkboxes)
+                if (coach.assignedTeams && Array.isArray(coach.assignedTeams)) {
+                    coach.assignedTeams.forEach(team => {
+                        const checkbox = document.querySelector(`input[value="${team}"]`);
+                        if (checkbox) checkbox.checked = true;
+                    });
+                }
+
+                // Datos médicos
+                document.getElementById('healthInsurance').value = coach.healthInsurance || '';
+                document.getElementById('insuranceNumber').value = coach.insuranceNumber || '';
+
+                // Estadísticas (solo lectura)
+                document.getElementById('playersManaged').textContent = coach.playersManaged || '0';
+                document.getElementById('matchesCoached').textContent = coach.matchesCoached || '0';
+                document.getElementById('winRate').textContent = (coach.winRate || 0) + '%';
+                document.getElementById('trainingSessions').textContent = coach.trainingSessions || '0';
+            }
+        }
+
+        // Inicializar manejadores del formulario
+        function initializeFormHandlers() {
+            // Toggle para mostrar/ocultar contraseña
+            const togglePassword = document.querySelector('.toggle-password');
+            const passwordInput = document.getElementById('password');
+
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function () {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-eye');
+                    icon.classList.toggle('fa-eye-slash');
+                });
+            }
+
+            // Manejar selección de certificado médico
+            const medicalCertificate = document.getElementById('medicalCertificate');
+            const certificateFileName = document.getElementById('certificateFileName');
+
+            medicalCertificate.addEventListener('change', function (e) {
+                if (e.target.files.length > 0) {
+                    certificateFileName.textContent = e.target.files[0].name;
+                } else {
+                    certificateFileName.textContent = 'Ningún archivo seleccionado';
+                }
+            });
+
+            // Manejar selección de certificaciones de coaching
+            const coachingCertificates = document.getElementById('coachingCertificates');
+            const coachingFileName = document.getElementById('coachingFileName');
+
+            coachingCertificates.addEventListener('change', function (e) {
+                if (e.target.files.length > 0) {
+                    if (e.target.files.length === 1) {
+                        coachingFileName.textContent = e.target.files[0].name;
+                    } else {
+                        coachingFileName.textContent = `${e.target.files.length} archivos seleccionados`;
+                    }
+                } else {
+                    coachingFileName.textContent = 'Ningún archivo seleccionado';
+                }
+            });
+
+            // Manejar envío del formulario
+            document.getElementById('datosEntrenadorForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                if (validateForm()) {
+                    const formData = collectFormData();
+                    
+                    // Aquí iría la lógica para enviar los datos al backend
+                    console.log('Datos del entrenador:', formData);
+                    alert('Datos guardados correctamente (demo)');
+                    
+                    // TODO: Implementar llamada al backend
+                    // updateCoachData(formData);
+                }
+            });
+        }
+
+        // Validar formulario
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#dc3545';
+                    field.style.backgroundColor = '#fff5f5';
+                } else {
+                    field.style.borderColor = '#ddd';
+                    field.style.backgroundColor = '#f8f8f8';
+                }
+            });
+
+            // Validar que al menos un equipo esté seleccionado
+            const checkedTeams = document.querySelectorAll('#assignedTeams input[type="checkbox"]:checked');
+            if (checkedTeams.length === 0) {
+                isValid = false;
+                alert('Debe seleccionar al menos un equipo o categoría');
+            }
+
+            if (!isValid) {
+                alert('Por favor complete todos los campos requeridos');
+            }
+
+            return isValid;
+        }
+
+        // Recopilar datos del formulario
+        function collectFormData() {
+            const assignedTeams = Array.from(document.querySelectorAll('#assignedTeams input[type="checkbox"]:checked'))
+                .map(checkbox => checkbox.value);
+
+            return {
+                // Datos personales
+                fullName: document.getElementById('fullName').value,
+                birthDate: document.getElementById('birthDate').value,
+                email: document.getElementById('email').value,
+                mobile: document.getElementById('mobile').value,
+                password: document.getElementById('password').value,
+
+                // Datos profesionales
+                specialization: document.getElementById('specialization').value,
+                certification: document.getElementById('certification').value,
+                yearsExperience: parseInt(document.getElementById('yearsExperience').value),
+                startDate: document.getElementById('startDate').value,
+                assignedTeams: assignedTeams,
+                availability: document.getElementById('availability').value,
+
+                // Datos médicos
+                healthInsurance: document.getElementById('healthInsurance').value,
+                insuranceNumber: document.getElementById('insuranceNumber').value,
+
+                // Archivos (se manejarían separadamente en una implementación real)
+                medicalCertificate: document.getElementById('medicalCertificate').files[0],
+                coachingCertificates: document.getElementById('coachingCertificates').files
+            };
+        }
+
+        // Función para que el backend actualice los datos
+        function updateCoachData(formData) {
+            // Esta función será implementada para enviar datos al backend
+            console.log('Enviando datos al backend:', formData);
+            
+            // Ejemplo de estructura para el backend:
+            /*
+            fetch('/api/coach/update', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getAuthToken()}`
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Datos actualizados correctamente');
+                    // Actualizar datos en auth.js si es necesario
+                } else {
+                    alert('Error al actualizar datos: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error de conexión al servidor');
+            });
+            */
+        }
+    </script>
+</body>
+
+</html>

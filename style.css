@@ -108,7 +108,147 @@ button {
 }
 
 .nav-option:hover {
-    background-color: var(--primary-color);
+  color: var(--primary-color);
+}
+/* Dropdown de Registro */
+.register-dropdown-container {
+    position: relative;
+}
+
+.register-dropdown-container .btn-register {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+}
+
+.register-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--dark-color);
+    border: 1px solid black;
+    border-radius: 8px;
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.register-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.register-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: var(--light-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+}
+
+.register-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.register-dropdown-item:hover {
+
+    color: var(--primary-color);
+}
+
+.register-dropdown-item i {
+    width: 16px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* Dropdown de Comunidad en desktop */
+.nav-dropdown-container {
+    position: relative;
+}
+
+.dropdown-trigger {
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+}
+/* Estados activos de dropdowns */
+.dropdown-trigger.dropdown-active,
+.user-profile-btn.dropdown-active {
+    color: var(--light-color) !important;
+}
+
+.dropdown-trigger.dropdown-active .dropdown-arrow-small,
+.user-profile-btn.dropdown-active .dropdown-arrow {
+    color: var(--light-color) !important;
+}
+
+
+.dropdown-arrow-small {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow-small.rotated {
+    transform: rotate(180deg);
+}
+/* Asegurar que el texto del saludo se mantenga blanco cuando está activo */
+.user-profile-btn.dropdown-active .user-greeting {
+    color: var(--light-color) !important;
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--dark-color);
+    border: 1px solid #333;
+    border-radius: 8px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: var(--light-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-bottom: 1px solid #333;
+}
+
+.nav-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.nav-dropdown-item:hover {
+    background-color: #333;
+}
+
+
+/* Dropdown de usuario en desktop */
+.user-dropdown-container {
+    position: relative;
 }
 
 /* Dropdown de usuario en desktop */

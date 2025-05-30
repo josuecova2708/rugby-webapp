@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga Masiva - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleCargaMasiva.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="carga-main">
+        <div class="carga-container">
+            <!-- Header con pasos -->
+               <button class="back-btn" onclick="window.location.href='../clasificacion/clasificacion.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            <div class="steps-header">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-title">Indicaciones</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-title">Subir archivo</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-title">Vista previa</span>
+                </div>
+            </div>
+
+            <!-- Contenido del paso 1: Indicaciones -->
+            <div class="step-content active" id="step-1-content">
+                <div class="instructions-section">
+                    <div class="instructions-text">
+                        <p>Para poder realizar una carga masiva de prospectos, es obligatorio que uses el archivo Excel preformateado, lo completes con los datos correspondientes y luego lo subas en el siguiente paso para poder ser procesado.</p>
+                        <p>Ten en cuenta que solo se permiten hasta 500 prospectos por archivo Excel</p>
+                        
+                        <div class="download-section">
+                            <a href="#" class="download-link" onclick="downloadTemplate()">Descarga aquí el archivo Excel para completar</a>
+                        </div>
+                        
+                        <p>Una vez que tengas preparado el archivo, ir a la pestaña "2-Subir archivo" o hacer <a href="#" class="click-link" onclick="goToStep(2)">click aquí para ir</a></p>
+                    </div>
+
+                    <div class="explanation-section">
+                        <h3>Explicación de cómo completar los campos del archivo Excel</h3>
+                        
+                        <table class="fields-table">
+                            <tbody>
+                                <tr>
+                                    <td class="field-name">Canal de adquisición</td>
+                                    <td class="field-description">
+                                        Este campo debe completarse con el canal de adquisición de la consulta. Por ejemplo: 
+                                        <span class="example">Facebook</span><br>
+                                        <span class="note">*El listado debe estar previamente en el sistema</span><br>
+                                        <span class="error-note">*Puedes dejar el campo vacío en cada caso si prospecto no reúne un canal de adquisición definida</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">Estado</td>
+                                    <td class="field-description">
+                                        Este campo debe completarse con el estado del prospecto. Por ejemplo: 
+                                        <span class="example">Nuevo</span><br>
+                                        <span class="note">*El listado debe estar previamente en el sistema</span><br>
+                                        <span class="error-note">*Este campo NO puede estar vacío</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">Empresa</td>
+                                    <td class="field-description">
+                                        La empresa del prospecto que realiza la consulta<br>
+                                        <span class="error-note">*Puedes dejar el campo vacío</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">Consulta</td>
+                                    <td class="field-description">
+                                        Consulta o mensaje del prospecto<br>
+                                        <span class="error-note">*Puedes dejar el campo vacío</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">Notas</td>
+                                    <td class="field-description">
+                                        Cualquier nota interna que fuera necesaria acerca de la consulta<br>
+                                        <span class="error-note">*Puedes dejar el campo vacío</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">Etiquetas</td>
+                                    <td class="field-description">
+                                        Este campo puede contener una o más etiquetas de prospecto. Por ejemplo: contactar, potencial cliente<br>
+                                        <span class="note">*Las etiquetas deben existir previamente en el sistema</span><br>
+                                        <span class="error-note">*Puedes dejar el campo vacío</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">Asignado a</td>
+                                    <td class="field-description">
+                                        Este campo debe completarse con el username o E-mail del usuario al que quieres asignar las consultas. Ejemplo 1: (username) 
+                                        <span class="example">admin</span><br>
+                                        Ejemplo 2: (E-mail) <span class="example">pablo.perez@gmail.com</span><br>
+                                        <span class="note">*Puedes dejar el campo vacío, esto hará que no se asigne a ningún usuario automáticamente utilizando el mismo método que se utiliza cuando agregas un nuevo prospecto</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="field-name">Contactos</td>
+                                    <td class="field-description">
+                                        Estos campos son para definir hasta 4 contactos de prospecto. A cada contacto se le puede cargar un nombre, un apellido, dos teléfonos, dos direcciones<br>
+                                        <span class="example">Campo "Contacto X Nombre": nombre del contacto</span><br>
+                                        <span class="example">Campo "Contacto X Apellido": apellido del contacto</span><br>
+                                        <span class="example">Campo "Contacto X E-mail 1": e-mail del contacto</span><br>
+                                        <span class="example">Campo "Contacto X E-mail 2": e-mail del contacto</span><br>
+                                        <span class="example">Campo "Contacto X Teléfono 1": teléfono del contacto</span><br>
+                                        <span class="example">Campo "Contacto X Teléfono 2": teléfono del contacto</span><br>
+                                        <span class="note">*1 contacto obligatorio elimina debe llenar al menos un campo completado (un nombre o apellido, e-mail o un teléfono)</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="custom-fields-section">
+                        <h3>Campos personalizados</h3>
+                        <p>En caso de tener habilitada la configuración de campos de los prospectos, se puede cargar valores a los mismos al hacer una carga masiva. Para ello hay que saber que al Excel se genera una columna extra por cada campo personalizado que tengas configurado. Debemos dejar claro que se debe respetar el tipo de datos pedidos (por el nombre de dicho campo). Algunos tipos de campo personalizado cuyo nombre es "Cantidad empleados".</p>
+                        <p>Debemos ser muy criterioso el Excel porque este genera un tipo de campo personalizado cantidad empleados.</p>
+                        <p>Si el campo es de selección cerrada "o por campo "Campo personalizado xxx", por campo debe ser el valor exacto que se encuentra configurado en los valores que se encuentran en dicha columna, serán idénticos al Excel personalizado cantidad empleados.</p>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn-next" onclick="goToStep(2)">
+                        Siguiente <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenido del paso 2: Subir archivo -->
+            <div class="step-content" id="step-2-content">
+                <div class="upload-section">
+                    <h3>Subir archivo Excel</h3>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <p>Arrastra y suelta tu archivo Excel aquí o</p>
+                        <button class="btn-select-file" onclick="selectFile()">Seleccionar archivo</button>
+                        <input type="file" id="fileInput" accept=".xlsx,.xls" style="display: none;">
+                        <p class="file-info">Formatos aceptados: .xlsx, .xls </p>
+                    </div>
+                    
+                    <div class="file-selected" id="fileSelected" style="display: none;">
+                        <div class="file-details">
+                            <i class="fas fa-file-excel"></i>
+                            <span class="file-name" id="fileName"></span>
+                            <span class="file-size" id="fileSize"></span>
+                            <button class="btn-remove-file" onclick="removeFile()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn-prev" onclick="goToStep(1)">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn-next" onclick="processFile()" id="btnProcess" disabled>
+                        Procesar archivo <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenido del paso 3: Vista previa -->
+            <div class="step-content" id="step-3-content">
+                <div class="preview-section">
+                    <h3>Vista previa del archivo</h3>
+                    <div class="preview-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalRecords">0</span>
+                            <span class="stat-label">Registros totales</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="validRecords">0</span>
+                            <span class="stat-label">Registros válidos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="errorRecords">0</span>
+                            <span class="stat-label">Registros con errores</span>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-table-container">
+                        <table class="preview-table" id="previewTable">
+                            <!-- La tabla se generará dinámicamente -->
+                        </table>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn-prev" onclick="goToStep(2)">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn-import" onclick="importData()" id="btnImport">
+                        <i class="fas fa-upload"></i> Importar datos
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        let selectedFile = null;
+        let previewData = null;
+
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado o no es entrenador, redirigir
+            if (!auth.isLoggedIn() || !auth.isCoach()) {
+                alert('Solo los entrenadores pueden acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar navegación
+            auth.updateNavigation();
+            initializeUploadArea();
+        });
+
+        // Inicializar área de carga
+        function initializeUploadArea() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('drag-over');
+            });
+
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('drag-over');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('drag-over');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFileSelection(files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFileSelection(e.target.files[0]);
+                }
+            });
+        }
+
+        // Navegar entre pasos
+        function goToStep(stepNumber) {
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Ocultar todos los steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+
+            // Mostrar el contenido y step correspondiente
+            document.getElementById(`step-${stepNumber}-content`).classList.add('active');
+            document.querySelector(`[data-step="${stepNumber}"]`).classList.add('active');
+        }
+
+        // Descargar template
+        function downloadTemplate() {
+            alert('Descargando template Excel - Funcionalidad próximamente');
+            // Aquí iría la lógica para descargar el template
+        }
+
+        // Seleccionar archivo
+        function selectFile() {
+            document.getElementById('fileInput').click();
+        }
+
+        // Manejar selección de archivo
+        function handleFileSelection(file) {
+            if (!file) return;
+
+            // Validar tipo de archivo
+            const validTypes = ['.xlsx', '.xls'];
+            const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+            
+            if (!validTypes.includes(fileExtension)) {
+                alert('Por favor selecciona un archivo Excel válido (.xlsx o .xls)');
+                return;
+            }
+
+            // Validar tamaño (ejemplo: máximo 10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                alert('El archivo es demasiado grande. Máximo 10MB.');
+                return;
+            }
+
+            selectedFile = file;
+            
+            // Mostrar información del archivo
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = formatFileSize(file.size);
+            document.getElementById('fileSelected').style.display = 'block';
+            document.getElementById('uploadArea').style.display = 'none';
+            document.getElementById('btnProcess').disabled = false;
+        }
+
+        // Formatear tamaño de archivo
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Remover archivo
+        function removeFile() {
+            selectedFile = null;
+            document.getElementById('fileSelected').style.display = 'none';
+            document.getElementById('uploadArea').style.display = 'block';
+            document.getElementById('btnProcess').disabled = true;
+            document.getElementById('fileInput').value = '';
+        }
+
+        // Procesar archivo
+        function processFile() {
+            if (!selectedFile) {
+                alert('No hay archivo seleccionado');
+                return;
+            }
+
+            // Simular procesamiento
+            alert('Procesando archivo... (Funcionalidad próximamente)');
+            
+            // Simular datos de vista previa
+            previewData = {
+                total: 150,
+                valid: 145,
+                errors: 5,
+                records: [
+                    ['Juan Pérez', 'juan.perez@email.com', '+54911234567', 'Facebook', 'Nuevo'],
+                    ['María González', 'maria.gonzalez@email.com', '+54911234568', 'Instagram', 'Contactado'],
+                    ['Carlos López', 'carlos.lopez@email.com', '+54911234569', 'Web', 'Nuevo']
+                ]
+            };
+            
+            updatePreviewStats();
+            generatePreviewTable();
+            goToStep(3);
+        }
+
+        // Actualizar estadísticas de vista previa
+        function updatePreviewStats() {
+            if (!previewData) return;
+            
+            document.getElementById('totalRecords').textContent = previewData.total;
+            document.getElementById('validRecords').textContent = previewData.valid;
+            document.getElementById('errorRecords').textContent = previewData.errors;
+        }
+
+        // Generar tabla de vista previa
+        function generatePreviewTable() {
+            if (!previewData) return;
+            
+            const table = document.getElementById('previewTable');
+            
+            // Limpiar tabla
+            table.innerHTML = '';
+            
+            // Crear header
+            const header = table.createTHead();
+            const headerRow = header.insertRow();
+            const headers = ['Nombre', 'Email', 'Teléfono', 'Canal', 'Estado', 'Status'];
+            
+            headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            
+            // Crear body
+            const tbody = table.createTBody();
+            previewData.records.forEach((record, index) => {
+                const row = tbody.insertRow();
+                record.forEach(cellData => {
+                    const cell = row.insertCell();
+                    cell.textContent = cellData;
+                });
+                
+                // Agregar status
+                const statusCell = row.insertCell();
+                statusCell.innerHTML = '<span class="status-valid">Válido</span>';
+                if (index >= previewData.valid) {
+                    statusCell.innerHTML = '<span class="status-error">Error</span>';
+                }
+            });
+        }
+
+        // Importar datos
+        function importData() {
+            if (confirm('¿Estás seguro de que quieres importar estos datos?')) {
+                alert('Importando datos... (Funcionalidad próximamente)');
+                // Aquí iría la lógica para enviar los datos al backend
+            }
+        }
+    </script>
+</body>
+
+</html>

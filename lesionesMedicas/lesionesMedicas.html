@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesiones Médicas - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleLesionesMedicas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="lesiones-main">
+        <div class="lesiones-container">
+            <!-- Header con botón de volver -->
+            <div class="lesiones-header">
+                <button class="back-btn" onclick="window.location.href='../clasificacion/clasificacion.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Lesiones Médicas</h1>
+            </div>
+
+            <!-- Tabla de lesiones médicas -->
+            <div class="lesiones-table-container">
+                <table class="lesiones-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre y Apellido</th>
+                            <th>Email</th>
+                            <th>Celular</th>
+                            <th>Lesión</th>
+                            <th>Duración</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="lesiones-actions">
+                <button class="btn-export" onclick="exportLesionesData()">
+                    <i class="fas fa-download"></i>
+                    Exportar archivo
+                </button>
+                <button class="btn-import" onclick="importLesionesData()">
+                    <i class="fas fa-upload"></i>
+                    Importar archivo
+                </button>
+                <button class="btn-edit" onclick="editLesionesData()">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado o no es entrenador, redirigir
+            if (!auth.isLoggedIn() || !auth.isCoach()) {
+                alert('Solo los entrenadores pueden acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar navegación
+            auth.updateNavigation();
+        });
+
+        // Funciones para los botones de acción
+        function exportLesionesData() {
+            alert('Exportar datos de lesiones médicas - Funcionalidad próximamente');
+            // Aquí iría la lógica para exportar los datos
+        }
+
+        function importLesionesData() {
+            // Crear input file temporal
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.csv,.xlsx,.xls';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    alert(`Importando archivo: ${file.name} - Funcionalidad próximamente`);
+                    // Aquí iría la lógica para procesar el archivo
+                }
+            };
+            input.click();
+        }
+
+        function editLesionesData() {
+            alert('Editar datos de lesiones médicas - Funcionalidad próximamente');
+            // Aquí iría la lógica para habilitar edición en línea
+        }
+    </script>
+</body>
+
+</html>

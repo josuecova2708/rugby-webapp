@@ -798,13 +798,13 @@ class AuthSystem {
 
             // Navegación específica para entrenadores
             case 'clasificacion':
-                alert('Clasificación - Próximamente');
+                window.location.href = '../clasificacion/clasificacion.html';
                 break;
             case 'panel-rendimiento':
-                alert('Panel de Rendimiento (Entrenador) - Próximamente');
+                window.location.href = '../panelEntrenador/panelEntrenador.html';
                 break;
             case 'analisis-ia':
-                alert('Análisis por IA - Próximamente');
+                window.location.href = '../analisisAI/analisisAI.html';
                 break;
             case 'perfil-entrenador':
                 window.location.href = '../perfil/perfil.html'

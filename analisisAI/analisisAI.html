@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis por IA - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleAnalisisAI.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="analisis-main">
+        <div class="analisis-container">
+            <!-- Header con filtros -->
+            <div class="analisis-header">
+                <button class="back-btn" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Análisis por IA</h1>
+                <div class="header-actions">
+                    <button class="btn-generate-ai" onclick="generateAIAnalysis()">
+                        <i class="fas fa-brain"></i>
+                        Generar Análisis IA
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtros de categorías -->
+            <div class="filters-section">
+                <div class="dropdown-container">
+                    <button class="dropdown-btn" onclick="toggleCategoryDropdown()">
+                        <span>Categorías</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="categoryDropdown">
+                        <label class="dropdown-item">
+                            <input type="radio" name="category" value="all" checked>
+                            <span>Todas las categorías</span>
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="radio" name="category" value="primera">
+                            <span>Primera</span>
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="radio" name="category" value="m21">
+                            <span>M21</span>
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="radio" name="category" value="m19">
+                            <span>M19</span>
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="radio" name="category" value="veteranos">
+                            <span>Veteranos</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn-category primera active" data-category="primera" onclick="selectCategory('primera')">
+                    PRIMERA
+                </button>
+            </div>
+
+            <!-- Pestañas Titulares/Suplentes -->
+            <div class="tabs-section">
+                <button class="tab-btn active" data-tab="titulares" onclick="switchTab('titulares')">
+                    TITULARES
+                </button>
+                <button class="tab-btn" data-tab="suplentes" onclick="switchTab('suplentes')">
+                    SUPLENTES
+                </button>
+            </div>
+
+            <!-- Tabla de análisis -->
+            <div class="analysis-table-container">
+                <table class="analysis-table">
+                    <thead>
+                        <tr>
+                            <th>Jugador</th>
+                            <th>Puesto</th>
+                            <th>Puesto ALT</th>
+                            <th>Clasificación</th>
+                            <th>Asistencia</th>
+                            <th>Selector</th>
+                        </tr>
+                    </thead>
+                    <tbody id="playersTableBody">
+                        <!-- Datos de titulares -->
+                        <tr class="titulares-row" data-category="primera">
+                            <td class="player-name">Cruz Juan</td>
+                            <td>Centro 12</td>
+                            <td>Apertura</td>
+                            <td class="classification">7</td>
+                            <td class="attendance">85%</td>
+                            <td class="selector">
+                                <div class="selector-toggle selected">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="titulares-row inactive" data-category="primera">
+                            <td class="player-name">Bardi Tomás <i class="fas fa-chevron-down player-dropdown"></i></td>
+                            <td>3ra Línea</td>
+                            <td>2da Línea</td>
+                            <td class="classification">8</td>
+                            <td class="attendance">80%</td>
+                            <td class="selector">
+                                <div class="selector-toggle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Más filas de ejemplo para titulares -->
+                        <tr class="titulares-row" data-category="primera">
+                            <td class="player-name">González Martín</td>
+                            <td>Pilar 1</td>
+                            <td>Hooker</td>
+                            <td class="classification">9</td>
+                            <td class="attendance">92%</td>
+                            <td class="selector">
+                                <div class="selector-toggle selected">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="titulares-row" data-category="primera">
+                            <td class="player-name">López Federico</td>
+                            <td>Wing 11</td>
+                            <td>Fullback</td>
+                            <td class="classification">6</td>
+                            <td class="attendance">78%</td>
+                            <td class="selector">
+                                <div class="selector-toggle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </td>
+                        </tr>
+                         <tr class="titulares-row" data-category="primera">
+                            <td class="player-name">López Federico</td>
+                            <td>Wing 11</td>
+                            <td>Fullback</td>
+                            <td class="classification">6</td>
+                            <td class="attendance">78%</td>
+                            <td class="selector">
+                                <div class="selector-toggle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        
+
+                        <!-- Datos de suplentes (ocultos inicialmente) -->
+                        <tr class="suplentes-row" data-category="primera" style="display: none;">
+                            <td class="player-name">Rodríguez Carlos</td>
+                            <td>Centro 13</td>
+                            <td>Wing</td>
+                            <td class="classification">5</td>
+                            <td class="attendance">70%</td>
+                            <td class="selector">
+                                <div class="selector-toggle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="suplentes-row" data-category="primera" style="display: none;">
+                            <td class="player-name">Martínez Diego</td>
+                            <td>Hooker 2</td>
+                            <td>Pilar</td>
+                            <td class="classification">7</td>
+                            <td class="attendance">88%</td>
+                            <td class="selector">
+                                <div class="selector-toggle selected">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="suplentes-row" data-category="primera" style="display: none;">
+                            <td class="player-name">Fernández Lucas</td>
+                            <td>Segunda Línea 4</td>
+                            <td>Tercera Línea</td>
+                            <td class="classification">6</td>
+                            <td class="attendance">75%</td>
+                            <td class="selector">
+                                <div class="selector-toggle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </td>
+                        </tr>
+                         <tr class="suplentes-row" data-category="primera" style="display: none;">
+                            <td class="player-name">Fernández Lucas</td>
+                            <td>Segunda Línea 4</td>
+                            <td>Tercera Línea</td>
+                            <td class="classification">6</td>
+                            <td class="attendance">75%</td>
+                            <td class="selector">
+                                <div class="selector-toggle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Datos para otras categorías (M21, M19, etc.) -->
+                        <tr class="titulares-row" data-category="m21" style="display: none;">
+                            <td class="player-name">Sánchez Pablo</td>
+                            <td>Apertura 10</td>
+                            <td>Centro</td>
+                            <td class="classification">8</td>
+                            <td class="attendance">90%</td>
+                            <td class="selector">
+                                <div class="selector-toggle selected">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="titulares-row" data-category="m21" style="display: none;">
+                            <td class="player-name">Torres Joaquín</td>
+                            <td>Fullback 15</td>
+                            <td>Wing</td>
+                            <td class="classification">7</td>
+                            <td class="attendance">85%</td>
+                            <td class="selector">
+                                <div class="selector-toggle">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Botones de acción
+             <div class="actions-section">
+                <button class="btn-export" onclick="exportSelection()">
+                    <i class="fas fa-download"></i>
+                    Exportar Selección
+                </button>
+                <button class="btn-save" onclick="saveSelection()">
+                    <i class="fas fa-save"></i>
+                    Guardar Selección
+                </button>
+                <button class="btn-reset" onclick="resetSelection()">
+                    <i class="fas fa-undo"></i>
+                    Restablecer
+                </button>
+            </div>
+            
+            -->
+            
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        let currentCategory = 'primera';
+        let currentTab = 'titulares';
+
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado o no es entrenador, redirigir
+            if (!auth.isLoggedIn() || !auth.isCoach()) {
+                alert('Solo los entrenadores pueden acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar navegación
+            auth.updateNavigation();
+            updateStats();
+        });
+
+        // Toggle dropdown de categorías
+        function toggleCategoryDropdown() {
+            const dropdown = document.getElementById('categoryDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Seleccionar categoría
+        function selectCategory(category) {
+            currentCategory = category;
+            
+            // Actualizar botón activo
+            document.querySelectorAll('.btn-category').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            // Filtrar tabla
+            filterTable();
+            updateStats();
+        }
+
+        // Cambiar pestaña (Titulares/Suplentes)
+        function switchTab(tab) {
+            currentTab = tab;
+            
+            // Actualizar botones de pestaña
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+            
+            // Filtrar tabla
+            filterTable();
+            updateStats();
+        }
+
+        // Filtrar tabla según categoría y pestaña
+        function filterTable() {
+            const rows = document.querySelectorAll('#playersTableBody tr');
+            
+            rows.forEach(row => {
+                const rowCategory = row.getAttribute('data-category');
+                const isCorrectCategory = currentCategory === 'all' || rowCategory === currentCategory;
+                const isCorrectTab = row.classList.contains(`${currentTab}-row`);
+                
+                if (isCorrectCategory && isCorrectTab) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Toggle selector de jugador
+        function togglePlayerSelector(element) {
+            const selectorToggle = element.querySelector('.selector-toggle');
+            const icon = selectorToggle.querySelector('i');
+            
+            if (selectorToggle.classList.contains('selected')) {
+                selectorToggle.classList.remove('selected');
+                icon.className = 'fas fa-times';
+            } else {
+                selectorToggle.classList.add('selected');
+                icon.className = 'fas fa-check';
+            }
+            
+            updateStats();
+        }
+
+        // Actualizar estadísticas
+        function updateStats() {
+            const visibleRows = document.querySelectorAll('#playersTableBody tr:not([style*="display: none"])');
+            const selectedRows = Array.from(visibleRows).filter(row => 
+                row.querySelector('.selector-toggle.selected')
+            );
+            
+            // Jugadores seleccionados
+            document.getElementById('selectedPlayers').textContent = selectedRows.length;
+            
+            // Promedio de clasificación
+            if (selectedRows.length > 0) {
+                const avgClassification = selectedRows.reduce((sum, row) => {
+                    const classification = parseInt(row.querySelector('.classification').textContent);
+                    return sum + classification;
+                }, 0) / selectedRows.length;
+                document.getElementById('avgRating').textContent = avgClassification.toFixed(1);
+                
+                // Promedio de asistencia
+                const avgAttendance = selectedRows.reduce((sum, row) => {
+                    const attendance = parseInt(row.querySelector('.attendance').textContent);
+                    return sum + attendance;
+                }, 0) / selectedRows.length;
+                document.getElementById('avgAttendance').textContent = Math.round(avgAttendance) + '%';
+            } else {
+                document.getElementById('avgRating').textContent = '0';
+                document.getElementById('avgAttendance').textContent = '0%';
+            }
+        }
+
+        // Generar análisis por IA
+        function generateAIAnalysis() {
+            // Simular proceso de IA
+            const btn = document.querySelector('.btn-generate-ai');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analizando...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                // Simular selección automática de mejores jugadores
+                const rows = document.querySelectorAll('#playersTableBody tr:not([style*="display: none"])');
+                
+                rows.forEach((row, index) => {
+                    const classification = parseInt(row.querySelector('.classification').textContent);
+                    const attendance = parseInt(row.querySelector('.attendance').textContent);
+                    const selectorToggle = row.querySelector('.selector-toggle');
+                    const icon = selectorToggle.querySelector('i');
+                    
+                    // Lógica simple de IA: seleccionar si clasificación > 6 y asistencia > 80%
+                    if (classification > 6 && attendance > 80) {
+                        selectorToggle.classList.add('selected');
+                        icon.className = 'fas fa-check';
+                    } else {
+                        selectorToggle.classList.remove('selected');
+                        icon.className = 'fas fa-times';
+                    }
+                });
+                
+                updateStats();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                alert('Análisis por IA completado. Se han seleccionado los jugadores con mejor rendimiento.');
+            }, 2000);
+        }
+
+        // Exportar selección
+        function exportSelection() {
+            alert('Exportando selección de jugadores - Funcionalidad próximamente');
+        }
+
+        // Guardar selección
+        function saveSelection() {
+            alert('Guardando selección de jugadores - Funcionalidad próximamente');
+        }
+
+        // Restablecer selección
+        function resetSelection() {
+            if (confirm('¿Estás seguro de que quieres restablecer la selección?')) {
+                document.querySelectorAll('.selector-toggle').forEach(toggle => {
+                    toggle.classList.remove('selected');
+                    toggle.querySelector('i').className = 'fas fa-times';
+                });
+                updateStats();
+            }
+        }
+
+        // Cerrar dropdown al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('categoryDropdown');
+            const dropdownBtn = document.querySelector('.dropdown-btn');
+            
+            if (!dropdown.contains(event.target) && !dropdownBtn.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Manejar clicks en selectores
+        document.addEventListener('click', function(event) {
+            if (event.target.closest('.selector-toggle')) {
+                togglePlayerSelector(event.target.closest('tr'));
+            }
+        });
+    </script>
+</body>
+
+</html>

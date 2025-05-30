@@ -1,0 +1,434 @@
+/* Estilos específicos para la página de indisciplina */
+
+/* Main content */
+.indisciplina-main {
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+    background-color: var(--gray-color);
+}
+
+.indisciplina-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header con botón de volver */
+.indisciplina-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--gray-color);
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.indisciplina-header h1 {
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* Tabla de indisciplina */
+.indisciplina-table-container {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+.indisciplina-table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.indisciplina-table thead {
+    background-color: black;
+    color: var(--primary-color);
+}
+
+.indisciplina-table th,
+.indisciplina-table td {
+    padding: 12px 8px;
+    text-align: center;
+    min-width: 80px;
+}
+
+.indisciplina-table th:last-child,
+.indisciplina-table td:last-child {
+    border-right: none;
+}
+
+.indisciplina-table th {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--primary-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Primera columna más ancha para nombres */
+.indisciplina-table th:first-child,
+.indisciplina-table td:first-child {
+    min-width: 150px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+/* Columna de email más ancha */
+.indisciplina-table th:nth-child(2),
+.indisciplina-table td:nth-child(2) {
+    min-width: 180px;
+    text-align: left;
+}
+
+/* Columna de celular */
+.indisciplina-table th:nth-child(3),
+.indisciplina-table td:nth-child(3) {
+    min-width: 120px;
+}
+
+/* Columna de posición alternativa */
+.indisciplina-table th:nth-child(4),
+.indisciplina-table td:nth-child(4) {
+    min-width: 120px;
+}
+
+/* Columna de partido */
+.indisciplina-table th:nth-child(5),
+.indisciplina-table td:nth-child(5) {
+    min-width: 100px;
+}
+
+/* Columnas de tarjetas y penales (centradas y destacadas) */
+.indisciplina-table th:nth-child(6),
+.indisciplina-table td:nth-child(6),
+.indisciplina-table th:nth-child(7),
+.indisciplina-table td:nth-child(7),
+.indisciplina-table th:nth-child(8),
+.indisciplina-table td:nth-child(8) {
+    min-width: 100px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Tarjetas rojas - fondo rojo suave */
+.indisciplina-table th:nth-child(6),
+.indisciplina-table td:nth-child(6) {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Tarjetas amarillas - fondo amarillo suave */
+.indisciplina-table th:nth-child(7),
+.indisciplina-table td:nth-child(7) {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+/* Penales - fondo naranja suave */
+.indisciplina-table th:nth-child(8),
+.indisciplina-table td:nth-child(8) {
+    background-color: rgba(253, 126, 20, 0.1);
+    color: #fd7e14;
+}
+
+/* Última columna (Observaciones) más ancha */
+.indisciplina-table th:last-child,
+.indisciplina-table td:last-child {
+    min-width: 200px;
+    text-align: left;
+    background-color: rgba(88, 175, 49, 0.1);
+    font-weight: 500;
+}
+
+.indisciplina-table tbody tr {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+    min-height: 50px;
+}
+
+.indisciplina-table tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.indisciplina-table tbody tr:hover {
+    background-color: rgba(88, 175, 49, 0.1);
+}
+
+.indisciplina-table td {
+    color: var(--dark-color);
+    font-weight: 500;
+    height: 45px;
+    vertical-align: middle;
+}
+
+/* Celdas vacías con efecto visual */
+.indisciplina-table td:empty {
+    background-color: #04571E38;
+    border: 1px dashed #dee2e6;
+    position: relative;
+}
+
+.indisciplina-table td:empty:hover {
+    background-color: rgba(88, 175, 49, 0.05);
+    border-color: var(--primary-color);
+}
+
+/* Mantener colores de fondo en celdas vacías para columnas especiales */
+.indisciplina-table td:nth-child(6):empty {
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.indisciplina-table td:nth-child(7):empty {
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+.indisciplina-table td:nth-child(8):empty {
+    background-color: rgba(253, 126, 20, 0.05);
+}
+
+.indisciplina-table td:last-child:empty {
+    background-color: rgba(88, 175, 49, 0.05);
+}
+
+/* Botones de acción */
+.indisciplina-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-export,
+.btn-import {
+    background-color: #04571E;
+    color: var(--light-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(88, 175, 49, 0.3);
+}
+
+.btn-edit {
+    background-color: #04571E;
+    color: var(--light-color);
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(88, 175, 49, 0.3);
+    min-width: 50px;
+}
+
+.btn-export:hover,
+.btn-import:hover,
+.btn-edit:hover {
+    background-color: #4a9629;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 175, 49, 0.4);
+}
+
+/* Media queries para desktop */
+@media (min-width: 768px) {
+    .indisciplina-main {
+        padding: 40px;
+    }
+
+    .indisciplina-container {
+        padding: 40px;
+    }
+
+    .indisciplina-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .indisciplina-table {
+        font-size: 1rem;
+    }
+
+    .indisciplina-table th,
+    .indisciplina-table td {
+        padding: 15px 10px;
+    }
+
+    .indisciplina-table th {
+        font-size: 0.9rem;
+    }
+
+    .indisciplina-table th:first-child,
+    .indisciplina-table td:first-child {
+        padding-left: 20px;
+    }
+
+    .indisciplina-actions {
+        gap: 25px;
+    }
+
+    .btn-export,
+    .btn-import {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+
+    .btn-edit {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 767px) {
+    .indisciplina-main {
+        padding: 15px;
+    }
+
+    .indisciplina-container {
+        padding: 15px;
+    }
+
+    .indisciplina-header {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .indisciplina-header h1 {
+        font-size: 1.5rem;
+        order: 2;
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+
+    .back-btn {
+        order: 1;
+        margin-right: 0;
+    }
+
+    .indisciplina-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .indisciplina-table {
+        min-width: 1100px;
+        font-size: 0.8rem;
+    }
+
+    .indisciplina-table th,
+    .indisciplina-table td {
+        padding: 8px 6px;
+        min-width: 70px;
+    }
+
+    .indisciplina-table th:first-child,
+    .indisciplina-table td:first-child {
+        min-width: 120px;
+        padding-left: 10px;
+    }
+
+    .indisciplina-table th:nth-child(2),
+    .indisciplina-table td:nth-child(2) {
+        min-width: 150px;
+    }
+
+    .indisciplina-table th:last-child,
+    .indisciplina-table td:last-child {
+        min-width: 150px;
+    }
+
+    .indisciplina-table th {
+        font-size: 0.75rem;
+    }
+
+    .indisciplina-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .btn-export,
+    .btn-import,
+    .btn-edit {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+}
+
+/* Scrollbar personalizado para la tabla */
+.indisciplina-table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.indisciplina-table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.indisciplina-table-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.indisciplina-table-container::-webkit-scrollbar-thumb:hover {
+    background: #4a9629;
+}
+
+/* Indicador de scroll horizontal en móvil */
+@media (max-width: 767px) {
+    .indisciplina-table-container::after {
+        content: "← Desliza para ver más columnas →";
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        color: #6c757d;
+        font-style: italic;
+    }
+
+    .indisciplina-table-container {
+        position: relative;
+        margin-bottom: 50px;
+    }
+}   

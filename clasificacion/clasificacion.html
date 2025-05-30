@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleClasificacion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="clasificacion-main">
+        <div class="clasificacion-container">
+            <!-- Header con botón de volver -->
+            <div class="clasificacion-header">
+                <button class="back-btn" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Clasificación</h1>
+            </div>
+
+            <!-- Tarjetas de opciones -->
+            <div class="options-grid">
+                
+                <!-- Opción Criterios de calificación -->
+                <div class="option-card" onclick="navigateToCalificacion()">
+                    <div class="card-content">
+                        <h3>Criterios de calificación</h3>
+                    </div>
+                </div>
+
+                <!-- Opción Indisciplina -->
+                <div class="option-card" onclick="navigateToIndisciplina()">
+                    <div class="card-content">
+                        <h3>Indisciplina</h3>
+                    </div>
+                </div>
+
+                <!-- Opción Lesiones Médicas -->
+                <div class="option-card" onclick="navigateToLesiones()">
+                    <div class="card-content">
+                        <h3>Lesiones Médicas</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Links informativos -->
+            <div class="info-links">
+                <a href="../cargaMasiva/cargaMasiva.html" class="info-link" onclick="showCalificacionInfo()">
+                    Como cargar tabla de Calificación y datos a tener en cuenta
+                </a>
+                <a href="#" class="info-link" onclick="showIndisciplinaInfo()">
+                    Como cargar tabla de Indisciplina y datos a tener en cuenta
+                </a>
+                <a href="#" class="info-link" onclick="showLesionesInfo()">
+                    Como cargar tabla de Lesiones y datos a tener en cuenta
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado o no es entrenador, redirigir
+            if (!auth.isLoggedIn() || !auth.isCoach()) {
+                alert('Solo los entrenadores pueden acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar navegación
+            auth.updateNavigation();
+        });
+
+        // Funciones de navegación (para futuras implementaciones)
+        function navigateToCalificacion() {
+            // Aquí se navegará a la tabla de criterios de calificación
+          
+            window.location.href = '../criterios/criterios.html';
+        }
+
+        function navigateToIndisciplina() {
+            // Aquí se navegará a la tabla de indisciplina
+           
+             window.location.href = '../indisciplina/indisciplina.html';
+        }
+
+        function navigateToLesiones() {
+            
+            window.location.href = '../lesionesMedicas/lesionesMedicas.html';
+        }
+
+        // Funciones para mostrar información (placeholder)
+        function showCalificacionInfo() {
+     
+        }
+
+        function showIndisciplinaInfo() {
+            alert('Información sobre cómo cargar tabla de Indisciplina:\n\n' +
+                  '• Tipos de faltas y sanciones\n' +
+                  '• Sistema de tarjetas (amarilla/roja)\n' +
+                  '• Registro de incidentes\n' +
+                  '• Historial disciplinario\n\n' +
+                  'Funcionalidad completa próximamente.');
+        }
+
+        function showLesionesInfo() {
+            alert('Información sobre cómo cargar tabla de Lesiones:\n\n' +
+                  '• Tipos de lesiones más comunes\n' +
+                  '• Clasificación por gravedad\n' +
+                  '• Tiempo de recuperación estimado\n' +
+                  '• Seguimiento médico\n\n' +
+                  'Funcionalidad completa próximamente.');
+        }
+    </script>
+</body>
+
+</html>

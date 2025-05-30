@@ -1,0 +1,298 @@
+/* Estilos específicos para la página de control de carga */
+
+/* Main content */
+.control-carga-main {
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+    background-color: var(--gray-color);
+}
+
+.control-carga-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header con botón de volver */
+.control-carga-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--gray-color);
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.control-carga-header h1 {
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* Tabla de control de carga */
+.carga-table-container {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.carga-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.carga-table thead {
+    background-color: #04571E38;
+    color: var(--light-color);
+}
+
+.carga-table th,
+.carga-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+.carga-table th {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--light-color);
+}
+
+.carga-table tbody tr {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.carga-table tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.carga-table tbody tr:hover {
+    background-color: rgba(88, 175, 49, 0.1);
+}
+
+.carga-table td {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+/* Columna de minutos centrada */
+.carga-table td:nth-child(2) {
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Contenedor de barra de intensidad */
+.intensity-bar-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intensity-bar {
+    width: 200px;
+    height: 20px;
+    background: linear-gradient(to right, #28a745, #ffc107, #dc3545);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+
+.intensity-level {
+    height: 100%;
+    background-color: #000;
+    border-radius: 10px 0 0 10px;
+    transition: width 0.8s ease-in-out;
+    position: relative;
+}
+
+.intensity-level::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #000;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Botones de acción */
+.carga-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-export,
+.btn-import {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(88, 175, 49, 0.3);
+}
+
+.btn-export:hover,
+.btn-import:hover {
+    background-color: #4a9629;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 175, 49, 0.4);
+}
+
+/* Media queries para desktop */
+@media (min-width: 768px) {
+    .control-carga-main {
+        padding: 40px;
+    }
+
+    .control-carga-container {
+        padding: 40px;
+    }
+
+    .control-carga-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .carga-table th,
+    .carga-table td {
+        padding: 18px 25px;
+    }
+
+    .carga-table th {
+        font-size: 1.1rem;
+    }
+
+    .intensity-bar {
+        width: 250px;
+        height: 24px;
+    }
+
+    .carga-actions {
+        gap: 25px;
+    }
+
+    .btn-export,
+    .btn-import {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 767px) {
+    .control-carga-main {
+        padding: 15px;
+    }
+
+    .control-carga-container {
+        padding: 15px;
+    }
+
+    .control-carga-header {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .control-carga-header h1 {
+        font-size: 1.5rem;
+        order: 2;
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+
+    .back-btn {
+        order: 1;
+        margin-right: 0;
+    }
+
+    /* Tabla responsive */
+    .carga-table-container {
+        overflow-x: auto;
+    }
+
+    .carga-table {
+        min-width: 600px;
+    }
+
+    .carga-table th,
+    .carga-table td {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    .carga-table th {
+        font-size: 0.85rem;
+    }
+
+    .intensity-bar {
+        width: 150px;
+        height: 18px;
+    }
+
+    .carga-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .btn-export,
+    .btn-import {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+}
+
+/* Animación de carga inicial */
+@keyframes loadIntensity {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
+.intensity-level {
+    animation: loadIntensity 1.5s ease-out;
+}

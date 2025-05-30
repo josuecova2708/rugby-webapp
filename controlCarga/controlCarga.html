@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Carga - Rugby 360</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./styleControlCarga.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">RUGBY <span>360</span></div>
+            <div class="nav-buttons">
+                <!-- Aquí se insertará la navegación dinámicamente -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="control-carga-main">
+        <div class="control-carga-container">
+            <!-- Header con botón de volver -->
+            <div class="control-carga-header">
+                <button class="back-btn" onclick="window.location.href='../panelEntrenador/panelEntrenador.html'">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Control de Carga</h1>
+            </div>
+
+            <!-- Tabla de control de carga -->
+            <div class="carga-table-container">
+                <table class="carga-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Minutos jugados</th>
+                            <th>Carga de intensidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="80"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="75"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="90"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="65"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="85"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="70"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="95"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="60"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Nombre de jugador</td>
+                            <td>80 min</td>
+                            <td>
+                                <div class="intensity-bar-container">
+                                    <div class="intensity-bar">
+                                        <div class="intensity-level" data-level="88"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="carga-actions">
+                <button class="btn-export">
+                    <i class="fas fa-download"></i>
+                    Exportar archivo
+                </button>
+                <button class="btn-import">
+                    <i class="fas fa-upload"></i>
+                    Importar archivo
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="rugby-ball-icon">
+                    <img src="../recursos/balon-logo.svg" alt="">
+                </div>
+            </div>
+            <div class="contacto-nosotros">
+                <div class="contact-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> (+54) 11 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> loscardosclub@gmail.com</p>
+                </div>
+
+                <div class="nosotros">
+                    <h3>Nosotros</h3>
+                    <p>Acerca del club</p>
+                </div>
+            </div>
+
+            <div class="terms">
+                <a href="../terms/terms.html">Términos y condiciones</a>
+                
+                <div class="social-media">
+                    <a href="#" class="social-icon facebook">
+                        <img src="../recursos/facebook-logo.svg" alt="">
+                    </a>
+                    <a href="#" class="social-icon instagram">
+                        <img src="../recursos/instagram-logo.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../auth.js"></script>
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Si no está logueado o no es entrenador, redirigir
+            if (!auth.isLoggedIn() || !auth.isCoach()) {
+                alert('Solo los entrenadores pueden acceder a esta página');
+                window.location.href = '../index.html';
+                return;
+            }
+
+            // Si está logueado y es entrenador, actualizar navegación
+            auth.updateNavigation();
+            initializeIntensityBars();
+        });
+
+        // Inicializar las barras de intensidad
+        function initializeIntensityBars() {
+            const intensityLevels = document.querySelectorAll('.intensity-level');
+            
+            intensityLevels.forEach(level => {
+                const percentage = parseInt(level.getAttribute('data-level'));
+                
+                // Establecer el ancho de la barra según el porcentaje
+                level.style.width = percentage + '%';
+                
+                // Establecer el color según el nivel de intensidad
+                if (percentage >= 80) {
+                    level.style.backgroundColor = '#dc3545'; // Rojo para alta intensidad
+                } else if (percentage >= 60) {
+                    level.style.backgroundColor = '#ffc107'; // Amarillo para intensidad media
+                } else {
+                    level.style.backgroundColor = '#28a745'; // Verde para baja intensidad
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

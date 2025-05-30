@@ -1,0 +1,757 @@
+/* Estilos específicos para la página de carga masiva */
+
+/* Main content */
+.carga-main {
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+    background-color: var(--gray-color);
+}
+
+.carga-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header con pasos */
+.steps-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--gray-color);
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    margin: 0 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.step.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    transform: scale(1.05);
+}
+
+.step-number {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.step.active .step-number {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.step-title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Contenido de pasos */
+.step-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.step-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sección de instrucciones */
+.instructions-section {
+    margin-bottom: 30px;
+}
+
+.instructions-text {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.instructions-text p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #495057;
+}
+
+.download-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.download-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.download-link:hover {
+    color: #4a9629;
+}
+a:visited{
+    color: var(--primary-color)!important;
+}
+.click-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.click-link:hover {
+    color: #4a9629;
+}
+
+/* Sección de explicación */
+.explanation-section h3 {
+    color: var(--dark-color);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Tabla de campos */
+.fields-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.fields-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: top;
+}
+
+.field-name {
+    font-weight: bold;
+    color: var(--dark-color);
+    width: 180px;
+    background-color: #f8f9fa;
+}
+
+.field-description {
+    color: #495057;
+    line-height: 1.6;
+}
+
+.example {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.note {
+    color: #007bff;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.error-note {
+    color: #dc3545;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Sección de campos personalizados */
+.custom-fields-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.custom-fields-section h3 {
+    color: var(--dark-color);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.custom-fields-section p {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Sección de upload */
+.upload-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.upload-section h3 {
+    color: var(--dark-color);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.upload-area {
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: var(--primary-color);
+    background-color: rgba(88, 175, 49, 0.05);
+}
+
+.upload-icon {
+    font-size: 4rem;
+    color: #dee2e6;
+    margin-bottom: 20px;
+}
+
+.upload-area:hover .upload-icon,
+.upload-area.drag-over .upload-icon {
+    color: var(--primary-color);
+}
+
+.upload-area p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.btn-select-file {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-select-file:hover {
+    background-color: #4a9629;
+    transform: translateY(-2px);
+}
+
+.file-info {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+/* Archivo seleccionado */
+.file-selected {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.file-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.file-details i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.file-name {
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+}
+
+.file-size {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.btn-remove-file {
+    background-color: #dc3545;
+    color: var(--light-color);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-remove-file:hover {
+    background-color: #c82333;
+}
+
+/* Vista previa */
+.preview-section h3 {
+    color: var(--dark-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.preview-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    min-width: 120px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    display: block;
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Tabla de vista previa */
+.preview-table-container {
+    background-color: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.preview-table thead {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.preview-table th,
+.preview-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.preview-table th {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preview-table tbody tr {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.preview-table tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.preview-table tbody tr:hover {
+    background-color: rgba(88, 175, 49, 0.1);
+}
+
+.preview-table td {
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+/* Status indicators */
+.status-valid {
+    background-color: rgba(88, 175, 49, 0.1);
+    color: var(--primary-color);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Botones de acción */
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-prev,
+.btn-next,
+.btn-import {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-prev {
+    background-color: #6c757d;
+    color: var(--light-color);
+}
+
+.btn-prev:hover {
+    background-color: #545b62;
+    transform: translateY(-2px);
+}
+
+.btn-next,
+.btn-import {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.btn-next:hover,
+.btn-import:hover {
+    background-color: #4a9629;
+    transform: translateY(-2px);
+}
+
+.btn-next:disabled {
+    background-color: #dee2e6;
+    color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-next:disabled:hover {
+    background-color: #dee2e6;
+    transform: none;
+}
+
+/* Media queries para desktop */
+@media (min-width: 768px) {
+    .carga-main {
+        padding: 40px;
+    }
+
+    .carga-container {
+        padding: 40px;
+    }
+
+    .steps-header {
+        margin-bottom: 50px;
+    }
+
+    .step {
+        padding: 20px 35px;
+        margin: 0 15px;
+    }
+
+    .step-number {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .step-title {
+        font-size: 1.1rem;
+    }
+
+    .instructions-text {
+        padding: 30px;
+    }
+
+    .fields-table td {
+        padding: 20px;
+    }
+
+    .field-name {
+        width: 220px;
+    }
+
+    .upload-area {
+        padding: 80px 40px;
+    }
+
+    .upload-icon {
+        font-size: 5rem;
+    }
+
+    .preview-stats {
+        gap: 60px;
+    }
+
+    .stat-item {
+        padding: 30px;
+        min-width: 150px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .btn-prev,
+    .btn-next,
+    .btn-import {
+        padding: 15px 40px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 767px) {
+    .carga-main {
+        padding: 15px;
+    }
+
+    .carga-container {
+        padding: 20px;
+    }
+
+    .steps-header {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .step {
+        padding: 12px 20px;
+        margin: 5px 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .step-number {
+        width: 22px;
+        height: 22px;
+        font-size: 0.8rem;
+    }
+
+    .step-title {
+        font-size: 0.9rem;
+    }
+
+    .instructions-text {
+        padding: 15px;
+    }
+
+    .fields-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .fields-table td {
+        padding: 12px;
+        display: block;
+        white-space: normal;
+    }
+
+    .field-name {
+        width: 100%;
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .upload-area {
+        padding: 40px 15px;
+    }
+
+    .upload-icon {
+        font-size: 3rem;
+    }
+
+    .upload-area p {
+        font-size: 1rem;
+    }
+
+    .preview-stats {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .stat-item {
+        padding: 15px;
+        min-width: 100px;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .preview-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .preview-table {
+        min-width: 600px;
+        font-size: 0.8rem;
+    }
+
+    .preview-table th,
+    .preview-table td {
+        padding: 8px 10px;
+    }
+
+    .step-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-prev,
+    .btn-next,
+    .btn-import {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .file-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Animaciones adicionales */
+.upload-area.processing {
+    border-color: var(--primary-color);
+    background-color: rgba(88, 175, 49, 0.05);
+}
+
+.upload-area.processing .upload-icon {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    80% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--light-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Tooltips */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Scrollbar personalizado */
+.preview-table-container::-webkit-scrollbar,
+.fields-table::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.preview-table-container::-webkit-scrollbar-track,
+.fields-table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.preview-table-container::-webkit-scrollbar-thumb,
+.fields-table::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.preview-table-container::-webkit-scrollbar-thumb:hover,
+.fields-table::-webkit-scrollbar-thumb:hover {
+    background: #4a9629;
+}

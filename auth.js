@@ -295,23 +295,8 @@ class AuthSystem {
                     <div class="desktop-nav desktop-only">
                         <div class="nav-options">
                             <button class="nav-option" onclick="auth.navigateTo('panel')">Panel de rendimiento</button>
-                            
-                            <!-- Dropdown de Comunidad -->
-                            <div class="nav-dropdown-container">
-                                <button class="nav-option dropdown-trigger" onclick="auth.toggleCommunityDropdown()" id="communityTrigger">
-                                    Comunidad <i class="fas fa-chevron-down dropdown-arrow-small"></i>
-                                </button>
-                                <div class="nav-dropdown" id="communityDropdown">
-                                    <div class="nav-dropdown-item" onclick="auth.navigateTo('notificaciones')">
-                                        <i class="fas fa-bell"></i>
-                                        <span>Notificaciones</span>
-                                    </div>
-                                    <div class="nav-dropdown-item" onclick="auth.navigateTo('feedback')">
-                                        <i class="fas fa-comment-alt"></i>
-                                        <span>Feedback</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="nav-option" onclick="auth.navigateTo('notificaciones')">Notificaciones</button>
+                            <button class="nav-option" onclick="auth.navigateTo('feedback')">Feedback</button>
                         </div>
                         
                         <div class="user-dropdown-container">
@@ -347,23 +332,8 @@ class AuthSystem {
                     <div class="desktop-nav desktop-only">
                         <div class="nav-options">
                             <button class="nav-option" onclick="auth.navigateTo('clasificacion')">Clasificación</button>
-                            
-                            <!-- Dropdown de Comunidad -->
-                            <div class="nav-dropdown-container">
-                                <button class="nav-option dropdown-trigger" onclick="auth.toggleCommunityDropdown()" id="communityTrigger">
-                                    Comunidad <i class="fas fa-chevron-down dropdown-arrow-small"></i>
-                                </button>
-                                <div class="nav-dropdown" id="communityDropdown">
-                                    <div class="nav-dropdown-item" onclick="auth.navigateTo('notificaciones')">
-                                        <i class="fas fa-bell"></i>
-                                        <span>Notificaciones</span>
-                                    </div>
-                                    <div class="nav-dropdown-item" onclick="auth.navigateTo('feedback')">
-                                        <i class="fas fa-comment-alt"></i>
-                                        <span>Feedback</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="nav-option" onclick="auth.navigateTo('notificaciones')">Notificaciones</button>
+                            <button class="nav-option" onclick="auth.navigateTo('feedback')">Feedback</button>
 
                             <!-- Dropdown de Entrenamiento -->
                             <div class="nav-dropdown-container">
@@ -437,22 +407,11 @@ class AuthSystem {
                                 </div>
                             `}
                             
-                            <!-- Submenu de Comunidad en móvil -->
-                            <div class="menu-item-with-submenu">
-                                <div class="menu-item submenu-trigger" onclick="auth.toggleMobileCommunitySubmenu()">
-                                    <span>Comunidad</span>
-                                    <i class="fas fa-chevron-down submenu-arrow"></i>
-                                </div>
-                                <div class="mobile-submenu" id="mobileCommunitySub">
-                                    <div class="submenu-item" onclick="auth.navigateTo('notificaciones')">
-                                        <i class="fas fa-bell"></i>
-                                        <span>Notificaciones</span>
-                                    </div>
-                                    <div class="submenu-item" onclick="auth.navigateTo('feedback')">
-                                        <i class="fas fa-comment-alt"></i>
-                                        <span>Feedback</span>
-                                    </div>
-                                </div>
+                            <div class="menu-item" onclick="auth.navigateTo('notificaciones')">
+                                <span>Notificaciones</span>
+                            </div>
+                            <div class="menu-item" onclick="auth.navigateTo('feedback')">
+                                <span>Feedback</span>
                             </div>
                         </div>
                         
@@ -495,11 +454,11 @@ class AuthSystem {
                     </button>
                     <div class="register-dropdown" id="registerDropdown">
                         <div class="register-dropdown-item" onclick="auth.navigateToRegister('jugador')">
-                            <i class="fas fa-user"></i>
+                           
                             <span>Jugador</span>
                         </div>
                         <div class="register-dropdown-item" onclick="auth.navigateToRegister('entrenador')">
-                            <i class="fas fa-whistle"></i>
+                           
                             <span>Entrenador</span>
                         </div>
                     </div>
@@ -508,44 +467,6 @@ class AuthSystem {
 
             // Agregar event listener para cerrar dropdown de registro
             document.addEventListener('click', this.handleRegisterOutsideClick.bind(this));
-        }
-    }
-
-    // Toggle del dropdown de Comunidad en desktop
-    toggleCommunityDropdown() {
-        const dropdown = document.getElementById('communityDropdown');
-        const trigger = document.getElementById('communityTrigger');
-        const arrow = trigger?.querySelector('.dropdown-arrow-small');
-
-        if (dropdown && arrow && trigger) {
-            const isActive = dropdown.classList.contains('active');
-
-            // Cerrar otros dropdowns primero
-            this.closeDesktopDropdown();
-            this.closeTrainingDropdown();
-
-            if (isActive) {
-                dropdown.classList.remove('active');
-                arrow.classList.remove('rotated');
-                trigger.classList.remove('dropdown-active');
-            } else {
-                dropdown.classList.add('active');
-                arrow.classList.add('rotated');
-                trigger.classList.add('dropdown-active');
-            }
-        }
-    }
-
-    // Cerrar dropdown de Comunidad
-    closeCommunityDropdown() {
-        const dropdown = document.getElementById('communityDropdown');
-        const trigger = document.getElementById('communityTrigger');
-        const arrow = trigger?.querySelector('.dropdown-arrow-small');
-
-        if (dropdown && arrow && trigger) {
-            dropdown.classList.remove('active');
-            arrow.classList.remove('rotated');
-            trigger.classList.remove('dropdown-active');
         }
     }
 
@@ -560,7 +481,6 @@ class AuthSystem {
 
             // Cerrar otros dropdowns primero
             this.closeDesktopDropdown();
-            this.closeCommunityDropdown();
 
             if (isActive) {
                 dropdown.classList.remove('active');
@@ -635,24 +555,6 @@ class AuthSystem {
         }
     }
 
-    // Toggle del submenu de Comunidad en móvil
-    toggleMobileCommunitySubmenu() {
-        const submenu = document.getElementById('mobileCommunitySub');
-        const arrow = document.querySelector('.submenu-arrow');
-
-        if (submenu && arrow) {
-            const isActive = submenu.classList.contains('active');
-
-            if (isActive) {
-                submenu.classList.remove('active');
-                arrow.classList.remove('rotated');
-            } else {
-                submenu.classList.add('active');
-                arrow.classList.add('rotated');
-            }
-        }
-    }
-
     // Toggle del dropdown de desktop
     toggleDesktopDropdown() {
         const dropdown = document.getElementById('userDropdown');
@@ -663,7 +565,6 @@ class AuthSystem {
             const isActive = dropdown.classList.contains('active');
 
             // Cerrar otros dropdowns primero
-            this.closeCommunityDropdown();
             this.closeTrainingDropdown();
 
             if (isActive) {
@@ -694,20 +595,13 @@ class AuthSystem {
     // Manejar clics fuera del dropdown
     handleOutsideClick(event) {
         const userDropdownContainer = document.querySelector('.user-dropdown-container');
-        const communityDropdownContainer = document.querySelector('.nav-dropdown-container');
-        const trainingDropdownContainer = document.querySelectorAll('.nav-dropdown-container')[1]; // Segundo dropdown si existe
+        const trainingDropdownContainer = document.querySelector('.nav-dropdown-container');
         const userDropdown = document.getElementById('userDropdown');
-        const communityDropdown = document.getElementById('communityDropdown');
         const trainingDropdown = document.getElementById('trainingDropdown');
 
         // Cerrar dropdown de usuario si el clic está fuera
         if (userDropdown && userDropdownContainer && !userDropdownContainer.contains(event.target)) {
             this.closeDesktopDropdown();
-        }
-
-        // Cerrar dropdown de comunidad si el clic está fuera
-        if (communityDropdown && communityDropdownContainer && !communityDropdownContainer.contains(event.target)) {
-            this.closeCommunityDropdown();
         }
 
         // Cerrar dropdown de entrenamiento si el clic está fuera
@@ -767,7 +661,6 @@ class AuthSystem {
         // Cerrar todos los menús después de navegar
         this.closeMobileMenu();
         this.closeDesktopDropdown();
-        this.closeCommunityDropdown();
         this.closeTrainingDropdown();
 
         // Aquí irían las redirecciones cuando se implementen las páginas

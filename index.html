@@ -7,6 +7,7 @@
     <title>Rugby 360</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="./script.js"></script>
 </head>
 
 <body>
@@ -32,27 +33,50 @@
         </section>
 
         <!-- Sección de jugadores (solo para entrenadores) -->
-        <section class="players-section" id="playersSection" style="display: none;">
+        <section class="players-section" id="playersSection">
             <div class="section-header">
                 <h2>Jugadores</h2>
             </div>
-            <div class="players-container">
+            <div class="players-container" id="playersContainer">
+                <div class="carousel-status" id="carouselStatus">PAUSADO</div>
+
+                <!-- Filtro de búsqueda -->
+                <div class="players-filter">
+                    <div class="filter-container">
+                        <div class="search-input-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" id="playerSearch"
+                                placeholder="Buscar jugador por nombre..." autocomplete="off">
+                            <button class="clear-search" id="clearSearch" onclick="clearSearch()">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+
+                        <div class="filter-counter" id="filterCounter">
+                            10 jugadores
+                        </div>
+                    </div>
+                </div>
+
                 <div class="players-grid" id="playersGrid">
                     <!-- Las tarjetas de jugadores se generarán dinámicamente -->
                 </div>
+
+                <!-- Mensaje de sin resultados -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <p>No se encontraron jugadores</p>
+                    <small>Intenta con otro nombre</small>
+                </div>
+
                 <div class="players-navigation">
-                    <button class="nav-btn prev-btn" onclick="previousPlayers()">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
                     <div class="players-indicators" id="playersIndicators">
                         <!-- Los indicadores se generarán dinámicamente -->
                     </div>
-                    <button class="nav-btn next-btn" onclick="nextPlayers()">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             </div>
         </section>
+
 
         <section class="training-info">
             <div class="section-header">
@@ -111,8 +135,82 @@
     <!-- Botón FAB para entrenadores (solo visible para entrenadores) -->
     <div class="fab-container" id="fabContainer" style="display: none;">
         <button class="fab-btn" onclick="toggleCoachModal()">
-           <img src="./recursos/entrenador-boton.svg" alt="">
+            <img src="./recursos/entrenador-boton.svg" alt="">
         </button>
+    </div>
+
+    <!-- FAB para jugadores (solo visible para jugadores) -->
+    <div class="player-fab-container" id="playerFabContainer" style="display: none;">
+        <button class="player-fab-btn" onclick="togglePlayerModal()">
+            <img src="./recursos/player-fabbutton.svg" alt="">
+        </button>
+    </div>
+    <!-- Modal de opciones para jugadores -->
+    <div class="player-modal-overlay" id="playerModalOverlay">
+        <div class="player-modal" id="playerModal">
+            <div class="player-modal-header">
+                <button class="player-modal-close-btn" onclick="closePlayerModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="player-modal-content">
+                <!-- Vista principal con opciones -->
+                <div class="player-modal-options" id="playerMainOptions">
+
+                    <!-- Opción Asistencia de entrenamiento -->
+                    <div class="player-modal-option" onclick="handleAsistenciaEntrenamiento()">
+                        <div class="player-option-icon">
+                            <!-- Icono temporal, puedes cambiarlo -->
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <span class="player-option-label">Asistencia de entrenamiento</span>
+                    </div>
+
+                    <!-- Opción ¿Cómo estuvo el entrenamiento de hoy? -->
+                    <div class="player-modal-option" onclick="handleComoEstuvoEntrenamiento()">
+                        <div class="player-option-icon">
+                            <!-- Icono temporal, puedes cambiarlo -->
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <span class="player-option-label">¿Cómo estuvo el entrenamiento de hoy?</span>
+                    </div>
+
+                </div>
+
+                <!-- Vista de intensidad del entrenamiento -->
+                <div class="intensity-view" id="intensityView">
+                    <div class="intensity-title">
+                        ¿Cómo estuvo la intensidad del entrenamiento?
+                    </div>
+
+                    <div class="intensity-scale" id="intensityScale">
+                        <div class="intensity-number" data-value="1">01</div>
+                        <div class="intensity-number" data-value="2">02</div>
+                        <div class="intensity-number" data-value="3">03</div>
+                        <div class="intensity-number" data-value="4">04</div>
+                        <div class="intensity-number" data-value="5">05</div>
+                        <div class="intensity-number" data-value="6">06</div>
+                        <div class="intensity-number" data-value="7">07</div>
+                        <div class="intensity-number" data-value="8">08</div>
+                        <div class="intensity-number" data-value="9">09</div>
+                        <div class="intensity-number" data-value="10">10</div>
+                    </div>
+
+                    <div class="intensity-actions">
+                        <button class="intensity-btn intensity-cancel" onclick="backToMainOptions()">
+                            Volver
+                        </button>
+                        <button class="intensity-btn intensity-submit" id="intensitySubmit" onclick="submitIntensity()"
+                            disabled>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 
     <!-- Modal de opciones para entrenadores -->
@@ -123,14 +221,14 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
+
             <div class="modal-content">
                 <div class="modal-options">
-                    
+
                     <!-- Opción Crear Anuncio -->
                     <div class="modal-option" onclick="navigateToPage('./crearNews/crearNews.html')">
                         <div class="option-icon">
-                        <img src="./recursos/anuncio-logo.svg" alt="">  
+                            <img src="./recursos/anuncio-logo.svg" alt="">
                         </div>
                         <span class="option-label">Crear anuncio</span>
                     </div>
@@ -181,10 +279,12 @@
             <div class="terms">
                 <a href="./terms/terms.html">Términos y condiciones</a>
                 <div class="social-media">
-                    <a href="#" class="social-icon facebook">
+                    <a href="https://www.facebook.com/share/18sj7enmeN/?mibextid=qi2Omg" target="_blank"
+                        class="social-icon facebook">
                         <img src="./recursos/facebook-logo.svg" alt="">
                     </a>
-                    <a href="#" class="social-icon instagram">
+                    <a href="https://www.instagram.com/loscardosrcoficial?igsh=YmdsdWNvZTY3eW5t" target="_blank"
+                        class="social-icon instagram">
                         <img src="./recursos/instagram-logo.svg" alt="">
                         </i></a>
                 </div>
@@ -193,282 +293,7 @@
     </footer>
 
     <script src="./auth.js"></script>
-    <script>
-        // Datos de jugadores para el entrenador
-        const playersData = [
-            {
-                name: "Juan Serra",
-                position: "3ra línea - Apertura",
-                status: "Activo - Primera",
-                attendance: "80%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Mario Coronel",
-                position: "Centro",
-                status: "Activo - Primera",
-                attendance: "85%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Agustín Montenegro",
-                position: "Ala",
-                status: "Activo - Primera",
-                attendance: "90%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Lucas González",
-                position: "Hooker",
-                status: "Activo - Primera",
-                attendance: "75%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Luciano Valdez",
-                position: "Tercera línea",
-                status: "Activo - Primera",
-                attendance: "88%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Federico Martín",
-                position: "Apertura",
-                status: "Activo - M21",
-                attendance: "92%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Carlos Rodríguez",
-                position: "Centro",
-                status: "Activo - Primera",
-                attendance: "82%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Diego Fernández",
-                position: "Wing",
-                status: "Activo - M21",
-                attendance: "86%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Sebastián García",
-                position: "Fullback",
-                status: "Activo - M21",
-                attendance: "89%",
-                photo: "./recursos/player-martinez.jpg"
-            },
-            {
-                name: "Nicolás Torres",
-                position: "Pilar",
-                status: "Activo - Primera",
-                attendance: "78%",
-                photo: "./recursos/player-martinez.jpg"
-            }
-        ];
-
-        let currentPlayerPage = 0;
-        const playersPerPage = 6;
-
-        // Inicializar cuando carga la página
-        document.addEventListener('DOMContentLoaded', function () {
-            // Verificar si hay usuario logueado y actualizar navegación
-            if (typeof auth !== 'undefined') {
-                auth.updateNavigation();
-
-                // Si es entrenador, mostrar sección de jugadores, botones de ubicación y FAB
-                if (auth.isLoggedIn() && auth.isCoach()) {
-                    showPlayersSection();
-                    showLocationActions();
-                    showCoachFAB();
-                }
-            }
-        });
-
-        // Mostrar FAB para entrenadores
-        function showCoachFAB() {
-            const fabContainer = document.getElementById('fabContainer');
-            fabContainer.style.display = 'block';
-        }
-
-        // Toggle del modal de entrenador
-        function toggleCoachModal() {
-            const modal = document.getElementById('coachModalOverlay');
-            const isVisible = modal.style.display === 'flex';
-            
-            if (isVisible) {
-                closeCoachModal();
-            } else {
-                openCoachModal();
-            }
-        }
-
-        // Abrir modal
-        function openCoachModal() {
-            const modal = document.getElementById('coachModalOverlay');
-            modal.style.display = 'flex';
-            modal.classList.add('modal-opening');
-            
-            // Agregar el event listener DESPUÉS de abrir
-            setTimeout(() => {
-                modal.classList.remove('modal-opening');
-                addModalListeners();
-            }, 300);
-        }
-
-        // Cerrar modal
-        function closeCoachModal() {
-            const modal = document.getElementById('coachModalOverlay');
-            modal.classList.add('modal-closing');
-            
-            // Remover event listeners
-            removeModalListeners();
-            
-            setTimeout(() => {
-                modal.style.display = 'none';
-                modal.classList.remove('modal-closing');
-            }, 300);
-        }
-
-        // Agregar listeners cuando el modal está abierto
-        function addModalListeners() {
-            const modal = document.getElementById('coachModalOverlay');
-            modal.addEventListener('click', handleModalClick);
-        }
-
-        // Remover listeners cuando el modal se cierra
-        function removeModalListeners() {
-            const modal = document.getElementById('coachModalOverlay');
-            modal.removeEventListener('click', handleModalClick);
-        }
-
-        // Manejar clics en el modal
-        function handleModalClick(event) {
-            const modalContent = document.getElementById('coachModal');
-            
-            // Si el clic fue fuera del contenido del modal, cerrarlo
-            if (event.target === event.currentTarget) {
-                closeCoachModal();
-            }
-        }
-
-        // Navegar a página específica
-        function navigateToPage(url) {
-            closeCoachModal();
-            setTimeout(() => {
-                window.location.href = url;
-            }, 200);
-        }
-
-        // Mostrar botones de ubicación para entrenadores
-        function showLocationActions() {
-            const locationActions = document.getElementById('locationCoachActions');
-            locationActions.style.display = 'flex';
-            const locationActionsNews = document.getElementById('locationCoachActionsNews');
-            locationActionsNews.style.display = 'flex';
-        }
-
-        // Funciones para los botones de ubicación
-        function createNewLocation() {
-            window.location.href = './crearEntrenamiento/crearEntrenamiento.html';
-        }
-        
-        function goToNews() {
-            window.location.href = './crearNews/crearNews.html';
-        }
-        
-        function editLocation() {
-            alert('Editar ubicación - Funcionalidad próximamente');
-            // Aquí iría la lógica para editar ubicación existente
-        }
-
-        // Mostrar sección de jugadores para entrenadores
-        function showPlayersSection() {
-            const playersSection = document.getElementById('playersSection');
-            playersSection.style.display = 'block';
-
-            generatePlayersGrid();
-            generateIndicators();
-        }
-
-        // Generar grid de jugadores
-        function generatePlayersGrid() {
-            const playersGrid = document.getElementById('playersGrid');
-            const startIndex = currentPlayerPage * playersPerPage;
-            const endIndex = Math.min(startIndex + playersPerPage, playersData.length);
-
-            playersGrid.innerHTML = '';
-
-            for (let i = startIndex; i < endIndex; i++) {
-                const player = playersData[i];
-                const playerCard = document.createElement('div');
-                playerCard.className = 'player-card';
-
-                playerCard.innerHTML = `
-                    <div class="player-photo">
-                        <img src="${player.photo}" alt="${player.name}" 
-                             onerror="this.src='./recursos/sergio.jpg'">
-                    </div>
-                    <div class="player-info">
-                        <div class="player-name">${player.name}</div>
-                        <div class="player-position">${player.position}</div>
-                        <div class="player-status">
-                            <span class="status-indicator"></span>
-                            ${player.status}
-                        </div>
-                        <div class="player-attendance">Asistencia ${player.attendance}</div>
-                    </div>
-                `;
-
-                playersGrid.appendChild(playerCard);
-            }
-        }
-
-        // Generar indicadores de páginas
-        function generateIndicators() {
-            const playersIndicators = document.getElementById('playersIndicators');
-            const totalPages = Math.ceil(playersData.length / playersPerPage);
-
-            playersIndicators.innerHTML = '';
-
-            for (let i = 0; i < totalPages; i++) {
-                const indicator = document.createElement('div');
-                indicator.className = `indicator ${i === currentPlayerPage ? 'active' : ''}`;
-                indicator.onclick = () => goToPlayerPage(i);
-                playersIndicators.appendChild(indicator);
-            }
-        }
-
-        // Navegar a página específica
-        function goToPlayerPage(page) {
-            const totalPages = Math.ceil(playersData.length / playersPerPage);
-            if (page >= 0 && page < totalPages) {
-                currentPlayerPage = page;
-                generatePlayersGrid();
-                generateIndicators();
-            }
-        }
-
-        // Página anterior
-        function previousPlayers() {
-            goToPlayerPage(currentPlayerPage - 1);
-        }
-
-        // Página siguiente
-        function nextPlayers() {
-            goToPlayerPage(currentPlayerPage + 1);
-        }
-
-     
-
-        document.getElementById('coachModalOverlay').addEventListener('click', function(event) {
-    // Solo cerrar si el clic es en el overlay, no en el modal
-    if (event.target === this) {
-        closeCoachModal();
-    }
-});
-    </script>
+  
 </body>
 
 </html>

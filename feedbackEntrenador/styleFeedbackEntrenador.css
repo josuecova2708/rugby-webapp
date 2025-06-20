@@ -20,6 +20,7 @@
 .feedback-sidebar {
     width: 280px;
     background-color: #f8f9fa;
+    
     border-right: 1px solid #e9ecef;
     display: flex;
     flex-direction: column;
@@ -63,7 +64,7 @@
     padding: 15px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #6c757d;
+    color: #070707;
     border-left: 3px solid transparent;
 }
 
@@ -81,6 +82,7 @@
 
 .player-name {
     font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.608);
 }
 
 /* Área principal de chat */

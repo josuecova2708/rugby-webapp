@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Carga - Rugby 360</title>
     <link rel="stylesheet" href="../style.css">
+    <script defer src="./scriptControlCarga.js"></script>
     <link rel="stylesheet" href="./styleControlCarga.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -37,106 +38,125 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Minutos jugados</th>
+                            <th>Esfuerzo</th>
                             <th>Carga de intensidad</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Nombre de jugador</td>
+                            <td>Juan Serra</td>
                             <td>80 min</td>
+                            <td class="esfuerzo-cell">8</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="80"></div>
+                                        <div class="intensity-level" data-minutos="80" data-esfuerzo="8"></div>
                                     </div>
+                                    <span class="intensity-value">640</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
-                            <td>80 min</td>
+                            <td>Mario Coronel</td>
+                            <td>75 min</td>
+                            <td class="esfuerzo-cell">7</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="75"></div>
+                                        <div class="intensity-level" data-minutos="75" data-esfuerzo="7"></div>
                                     </div>
+                                    <span class="intensity-value">525</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
+                            <td>Agustín Montenegro</td>
                             <td>80 min</td>
+                            <td class="esfuerzo-cell">9</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="90"></div>
+                                        <div class="intensity-level" data-minutos="80" data-esfuerzo="9"></div>
                                     </div>
+                                    <span class="intensity-value">720</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
-                            <td>80 min</td>
+                            <td>Lucas González</td>
+                            <td>65 min</td>
+                            <td class="esfuerzo-cell">6</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="65"></div>
+                                        <div class="intensity-level" data-minutos="65" data-esfuerzo="6"></div>
                                     </div>
+                                    <span class="intensity-value">390</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
+                            <td>Luciano Valdez</td>
                             <td>80 min</td>
+                            <td class="esfuerzo-cell">8</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="85"></div>
+                                        <div class="intensity-level" data-minutos="80" data-esfuerzo="8"></div>
                                     </div>
+                                    <span class="intensity-value">640</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
-                            <td>80 min</td>
+                            <td>Federico Martín</td>
+                            <td>70 min</td>
+                            <td class="esfuerzo-cell">7</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="70"></div>
+                                        <div class="intensity-level" data-minutos="70" data-esfuerzo="7"></div>
                                     </div>
+                                    <span class="intensity-value">490</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
+                            <td>Carlos Rodríguez</td>
                             <td>80 min</td>
+                            <td class="esfuerzo-cell">10</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="95"></div>
+                                        <div class="intensity-level" data-minutos="80" data-esfuerzo="10"></div>
                                     </div>
+                                    <span class="intensity-value">800</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
-                            <td>80 min</td>
+                            <td>Diego Fernández</td>
+                            <td>60 min</td>
+                            <td class="esfuerzo-cell">5</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="60"></div>
+                                        <div class="intensity-level" data-minutos="60" data-esfuerzo="5"></div>
                                     </div>
+                                    <span class="intensity-value">300</span>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nombre de jugador</td>
+                            <td>Sebastián García</td>
                             <td>80 min</td>
+                            <td class="esfuerzo-cell">9</td>
                             <td>
                                 <div class="intensity-bar-container">
                                     <div class="intensity-bar">
-                                        <div class="intensity-level" data-level="88"></div>
+                                        <div class="intensity-level" data-minutos="80" data-esfuerzo="9"></div>
                                     </div>
+                                    <span class="intensity-value">720</span>
                                 </div>
                             </td>
                         </tr>
@@ -195,42 +215,7 @@
     </footer>
 
     <script src="../auth.js"></script>
-    <script>
-        // Verificar autenticación al cargar la página
-        document.addEventListener('DOMContentLoaded', function () {
-            // Si no está logueado o no es entrenador, redirigir
-            if (!auth.isLoggedIn() || !auth.isCoach()) {
-                alert('Solo los entrenadores pueden acceder a esta página');
-                window.location.href = '../index.html';
-                return;
-            }
-
-            // Si está logueado y es entrenador, actualizar navegación
-            auth.updateNavigation();
-            initializeIntensityBars();
-        });
-
-        // Inicializar las barras de intensidad
-        function initializeIntensityBars() {
-            const intensityLevels = document.querySelectorAll('.intensity-level');
-            
-            intensityLevels.forEach(level => {
-                const percentage = parseInt(level.getAttribute('data-level'));
-                
-                // Establecer el ancho de la barra según el porcentaje
-                level.style.width = percentage + '%';
-                
-                // Establecer el color según el nivel de intensidad
-                if (percentage >= 80) {
-                    level.style.backgroundColor = '#dc3545'; // Rojo para alta intensidad
-                } else if (percentage >= 60) {
-                    level.style.backgroundColor = '#ffc107'; // Amarillo para intensidad media
-                } else {
-                    level.style.backgroundColor = '#28a745'; // Verde para baja intensidad
-                }
-            });
-        }
-    </script>
+    
 </body>
 
 </html>

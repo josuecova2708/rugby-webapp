@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./stylePanelEntrenador.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="./scriptPanelEntrenador.js"></script>
 </head>
 
 <body>
@@ -48,7 +49,7 @@
 
             <!-- Contenido de las pestañas -->
             <div class="panel-content">
-                
+
                 <!-- Pestaña Jugadores (activa por defecto) -->
                 <div class="tab-content active" id="jugadores">
                     <div class="jugadores-section">
@@ -57,7 +58,7 @@
                                 Selecciona un jugador para ver su rendimiento detallado
                             </p>
                         </div>
-                        
+
                         <div class="players-container">
                             <div class="players-grid" id="playersGrid">
                                 <!-- Las tarjetas de jugadores se generarán dinámicamente -->
@@ -80,7 +81,41 @@
                 <!-- Pestaña Gimnasio -->
                 <div class="tab-content" id="gimnasio" style="display: none;">
                     <div class="gimnasio-section">
-                        
+
+
+                        <!-- Filtro de ejercicios -->
+                        <div class="exercise-filter-container">
+                            <div class="filter-header">
+                                <h3><i class="fas fa-filter"></i> Filtrar por ejercicio</h3>
+                            </div>
+                            <div class="filter-buttons" id="exerciseFilters">
+                                <button class="filter-btn active" data-exercise="todos">
+                                    <i class="fas fa-list"></i>
+                                    Todos
+                                </button>
+                                <button class="filter-btn" data-exercise="Sentadilla">
+                                    <i class="fas fa-dumbbell"></i>
+                                    Sentadilla
+                                </button>
+                                <button class="filter-btn" data-exercise="Pecho">
+                                    <i class="fas fa-dumbbell"></i>
+                                    Pecho
+                                </button>
+                                <button class="filter-btn" data-exercise="Dominadas">
+                                    <i class="fas fa-dumbbell"></i>
+                                    Dominadas
+                                </button>
+                                <button class="filter-btn" data-exercise="Arranque">
+                                    <i class="fas fa-dumbbell"></i>
+                                    Arranque
+                                </button>
+                                <button class="filter-btn" data-exercise="Peso muerto">
+                                    <i class="fas fa-dumbbell"></i>
+                                    Peso muerto
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Tabla de rendimiento del gimnasio -->
                         <div class="performance-table-container">
                             <table class="performance-table">
@@ -92,61 +127,8 @@
                                         <th>KG</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Sentadilla</td>
-                                        <td>4</td>
-                                        <td>85</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Pecho</td>
-                                        <td>4</td>
-                                        <td>90</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Dominadas</td>
-                                        <td>5</td>
-                                        <td>100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Arranque</td>
-                                        <td>5</td>
-                                        <td>100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Peso muerto</td>
-                                        <td>4</td>
-                                        <td>100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Sentadilla</td>
-                                        <td>4</td>
-                                        <td>85</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Pecho</td>
-                                        <td>4</td>
-                                        <td>90</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Dominadas</td>
-                                        <td>5</td>
-                                        <td>100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nombre de jugador</td>
-                                        <td>Arranque</td>
-                                        <td>5</td>
-                                        <td>100</td>
-                                    </tr>
+                                <tbody id="performanceTableBody">
+                                    <!-- Filas se generarán dinámicamente -->
                                 </tbody>
                             </table>
                         </div>
@@ -161,7 +143,8 @@
                                 <i class="fas fa-upload"></i>
                                 Importar archivo
                             </button>
-                            <button class="btn-control-carga" onclick="window.location.href='../controlCarga/controlCarga.html'">
+                            <button class="btn-control-carga"
+                                onclick="window.location.href='../controlCarga/controlCarga.html'">
                                 Ver control de carga
                             </button>
                         </div>
@@ -172,12 +155,13 @@
                 <!-- Pestaña Asistencias -->
                 <div class="tab-content" id="asistencias" style="display: none;">
                     <div class="asistencias-section">
-                        
+
                         <!-- Buscador de jugadores -->
                         <div class="search-container">
                             <div class="search-input-container">
                                 <i class="fas fa-search search-icon"></i>
-                                <input type="text" class="search-input" placeholder="Buscar jugador..." id="playerSearch">
+                                <input type="text" class="search-input" placeholder="Buscar jugador..."
+                                    id="playerSearch">
                             </div>
                         </div>
 
@@ -273,12 +257,13 @@
                 <!-- Pestaña Desempeño técnico -->
                 <div class="tab-content" id="desempeno" style="display: none;">
                     <div class="desempeno-section">
-                        
+
                         <!-- Buscador de jugadores -->
                         <div class="search-container">
                             <div class="search-input-container">
                                 <i class="fas fa-search search-icon"></i>
-                                <input type="text" class="search-input" placeholder="Buscar jugador..." id="playerSearchDesempeno">
+                                <input type="text" class="search-input" placeholder="Buscar jugador..."
+                                    id="playerSearchDesempeno">
                             </div>
                         </div>
 
@@ -406,209 +391,7 @@
     </footer>
 
     <script src="../auth.js"></script>
-    <script>
-        // Datos de jugadores (mismo que en index.html)
-        const playersData = [
-            {
-                name: "Juan Serra",
-                position: "3ra línea - Apertura",
-                status: "Activo - Primera",
-                attendance: "80%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Mario Coronel",
-                position: "Centro",
-                status: "Activo - Primera",
-                attendance: "85%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Agustín Montenegro",
-                position: "Ala",
-                status: "Activo - Primera",
-                attendance: "90%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Lucas González",
-                position: "Hooker",
-                status: "Activo - Primera",
-                attendance: "75%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Luciano Valdez",
-                position: "Tercera línea",
-                status: "Activo - Primera",
-                attendance: "88%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Federico Martín",
-                position: "Apertura",
-                status: "Activo - M21",
-                attendance: "92%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Carlos Rodríguez",
-                position: "Centro",
-                status: "Activo - Primera",
-                attendance: "82%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Diego Fernández",
-                position: "Wing",
-                status: "Activo - M21",
-                attendance: "86%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Sebastián García",
-                position: "Fullback",
-                status: "Activo - M21",
-                attendance: "89%",
-                photo: "../recursos/player-martinez.jpg"
-            },
-            {
-                name: "Nicolás Torres",
-                position: "Pilar",
-                status: "Activo - Primera",
-                attendance: "78%",
-                photo: "../recursos/player-martinez.jpg"
-            }
-        ];
 
-        let currentPlayerPage = 0;
-        const playersPerPage = 6;
-
-        // Verificar autenticación al cargar la página
-        document.addEventListener('DOMContentLoaded', function () {
-            // Si no está logueado o no es entrenador, redirigir
-            if (!auth.isLoggedIn() || !auth.isCoach()) {
-                alert('Solo los entrenadores pueden acceder a esta página');
-                window.location.href = '../index.html';
-                return;
-            }
-
-            // Si está logueado y es entrenador, actualizar navegación
-            auth.updateNavigation();
-            initializePanelTabs();
-            initializePlayersSection();
-        });
-
-        // Inicializar sistema de pestañas
-        function initializePanelTabs() {
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-
-                    // Remover clase active de todos los botones y contenidos
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => {
-                        content.classList.remove('active');
-                        content.style.display = 'none';
-                    });
-
-                    // Agregar clase active al botón clickeado
-                    this.classList.add('active');
-
-                    // Mostrar el contenido correspondiente
-                    const targetContent = document.getElementById(targetTab);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                        targetContent.style.display = 'block';
-                    }
-                });
-            });
-        }
-
-        // Inicializar sección de jugadores
-        function initializePlayersSection() {
-            generatePlayersGrid();
-            generateIndicators();
-        }
-
-        // Generar grid de jugadores
-        function generatePlayersGrid() {
-            const playersGrid = document.getElementById('playersGrid');
-            const startIndex = currentPlayerPage * playersPerPage;
-            const endIndex = Math.min(startIndex + playersPerPage, playersData.length);
-
-            playersGrid.innerHTML = '';
-
-            for (let i = startIndex; i < endIndex; i++) {
-                const player = playersData[i];
-                const playerCard = document.createElement('div');
-                playerCard.className = 'player-card';
-                playerCard.onclick = () => selectPlayer(player);
-
-                playerCard.innerHTML = `
-                    <div class="player-photo">
-                        <img src="${player.photo}" alt="${player.name}" 
-                             onerror="this.src='../recursos/sergio.jpg'">
-                    </div>
-                    <div class="player-info">
-                        <div class="player-name">${player.name}</div>
-                        <div class="player-position">${player.position}</div>
-                        <div class="player-status">
-                            <span class="status-indicator"></span>
-                            ${player.status}
-                        </div>
-                        <div class="player-attendance">Asistencia ${player.attendance}</div>
-                    </div>
-                `;
-
-                playersGrid.appendChild(playerCard);
-            }
-        }
-
-        // Generar indicadores de páginas
-        function generateIndicators() {
-            const playersIndicators = document.getElementById('playersIndicators');
-            const totalPages = Math.ceil(playersData.length / playersPerPage);
-
-            playersIndicators.innerHTML = '';
-
-            for (let i = 0; i < totalPages; i++) {
-                const indicator = document.createElement('div');
-                indicator.className = `indicator ${i === currentPlayerPage ? 'active' : ''}`;
-                indicator.onclick = () => goToPlayerPage(i);
-                playersIndicators.appendChild(indicator);
-            }
-        }
-
-        // Navegar a página específica
-        function goToPlayerPage(page) {
-            const totalPages = Math.ceil(playersData.length / playersPerPage);
-            if (page >= 0 && page < totalPages) {
-                currentPlayerPage = page;
-                generatePlayersGrid();
-                generateIndicators();
-            }
-        }
-
-        // Página anterior
-        function previousPlayers() {
-            goToPlayerPage(currentPlayerPage - 1);
-        }
-
-        // Página siguiente
-        function nextPlayers() {
-            goToPlayerPage(currentPlayerPage + 1);
-        }
-
-        // Seleccionar jugador (funcionalidad futura)
-        function selectPlayer(player) {
-            alert(`Has seleccionado a ${player.name}\nPosición: ${player.position}\nAsistencia: ${player.attendance}\n\nEsta funcionalidad estará disponible próximamente.`);
-            // Aquí se implementará la navegación al detalle del jugador
-        }
-    </script>
 </body>
 
 </html>

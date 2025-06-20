@@ -1,0 +1,26 @@
+{
+  "name": "rugby-webapp",
+  "version": "1.0.0",
+  "description": "WebApp para el proyecto Rugby 360",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
+    "test": "jest"
+  },
+  "author": "Tu Nombre",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "vite": "^6.3.5"
+  }
+}
+
